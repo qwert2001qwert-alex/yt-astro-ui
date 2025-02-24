@@ -31,6 +31,8 @@ const getNormalizedPost = async (post: CollectionEntry<'docs'>): Promise<Post> =
   const { Content, remarkPluginFrontmatter } = await render(post);
 
   const {
+    publishDate: rawPublishDate = new Date(),
+    updateDate: rawUpdateDate,
     title,
     excerpt,
     image,
@@ -42,6 +44,9 @@ const getNormalizedPost = async (post: CollectionEntry<'docs'>): Promise<Post> =
 
   const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
 
+  const publishDate = new Date(rawPublishDate);
+  const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
+  
   const category = rawCategory
     ? {
         slug: cleanSlug(rawCategory),
@@ -58,6 +63,9 @@ const getNormalizedPost = async (post: CollectionEntry<'docs'>): Promise<Post> =
     id: id,
     slug: slug,
     permalink: await generatePermalink({ id, slug, category: category?.slug }),
+
+    publishDate: publishDate,
+    updateDate: updateDate,
     
     title: title,
     excerpt: excerpt,
@@ -81,7 +89,8 @@ const load = async function (): Promise<Array<Post>> {
   const normalizedPosts = posts.map(async (post: Post) => await getNormalizedPost(post));
 
   const results = (await Promise.all(normalizedPosts))
-    .filter((post: Post) => !post.draft);
+    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
+    .filter((post) => !post.draft);
 
   return results;
 };

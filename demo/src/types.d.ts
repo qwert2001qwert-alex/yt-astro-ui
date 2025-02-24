@@ -12,6 +12,11 @@ export interface Post {
   permalink: string;
 
   /**  */
+  publishDate: Date;
+  /**  */
+  updateDate?: Date;
+  
+  /**  */
   title: string;
   /** Optional summary of post content. */
   excerpt?: string;
