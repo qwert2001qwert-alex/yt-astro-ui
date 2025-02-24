@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+ * Dark mode by class
+ * Read more: https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* 
+ * Define theme variables
+ * Read more: https://tailwindcss.com/docs/colors#referencing-other-variables
+ */
+:root {
+  /* Colors */
+  --yt-color-background: #f3f3f6;
+  --yt-color-foreground: #2F3133;
+  --yt-color-card: hsl(0 0% 100%);
+  --yt-color-card-foreground: hsl(0 0% 3.9%);
+  --yt-color-popover: hsl(0 2% 21%);
+  --yt-color-popover-foreground: hsl(0 0% 100%);
+  --yt-color-primary: rgb(192 38 211);
+  --yt-color-primary-foreground: hsl(0 0% 100%);
+  --yt-color-secondary: hsl(240 4.8% 95.9%);
+  --yt-color-secondary-foreground: hsl(240 5.9% 10%);
+  --yt-color-muted: hsl(240 4.8% 95.9%);
+  --yt-color-muted-foreground: hsl(0 0% 28.24%);
+  --yt-color-accent: black;
+  --yt-color-accent-foreground: white;
+  --yt-color-destructive: hsl(0 72.22% 50.59%);
+  --yt-color-destructive-foreground: hsl(0 0% 98%);
+
+  --yt-color-border: hsl(0 0% 89.8%);
+  --yt-color-input: hsl(0 0% 89.8%);
+  --yt-color-ring: hsl(0 0% 3.9%);
+
+  --yt-radius: 0.5rem;
+
+  --aw-color-bg-page: rgb(255 255 255);
+  --aw-color-bg-page-dark: hsl(0 0% 10%);
+
+  ::selection {
+    background-color: lavender;
+  }
+}
+
+.dark {
+  /* Colors */
+  --yt-color-background: #0c0e11;
+  --yt-color-foreground: #C6C6C9;
+  --yt-color-card: hsl(220 6% 10%);
+  --yt-color-card-foreground: hsl(0 0% 98%);
+  --yt-color-popover: hsl(0 0% 3.9%);
+  --yt-color-popover-foreground: hsl(0 0% 98%);
+  --yt-color-primary: rgb(110 231 183);
+  --yt-color-primary-foreground: hsl(0 0% 100%);
+  --yt-color-secondary: hsl(25 100% 90%);
+  --yt-color-secondary-foreground: hsl(25 100% 40%);
+  --yt-color-muted: hsl(240 3.7% 15.9%);
+  --yt-color-muted-foreground: hsl(240 5% 70%);
+  --yt-color-accent: white;
+  --yt-color-accent-foreground: black;
+  --yt-color-destructive: hsl(0 62.8% 30.6%);
+  --yt-color-destructive-foreground: hsl(0 0% 98%);
+  --yt-color-border: hsl(0 0% 14.9%);
+  --yt-color-input: hsl(0 0% 25%);
+  --yt-color-ring: hsl(0 0% 83.1%);
+
+  --aw-color-bg-page: rgb(3 6 32);
+
+  ::selection {
+    background-color: black;
+    color: snow;
+  }
+}
+
+@theme inline {
+  --color-border: var(--yt-color-border);
+  --color-input: var(--yt-color-input);
+  --color-ring: var(--yt-color-ring);
+
+  --color-background:var(--yt-color-background);
+  --color-foreground: var(--yt-color-foreground);
+
+  --color-card: var(--yt-color-card);
+  --color-card-foreground: var(--yt-color-card-foreground);
+
+  --color-primary: var(--yt-color-primary);
+  --color-primary-foreground: var(--yt-color-primary-foreground);
+
+  --color-secondary: var(--yt-color-secondary);
+  --color-secondary-foreground: var(--yt-color-secondary-foreground);
+
+  --color-destructive: var(--yt-color-destructive);
+  --color-destructive-foreground: var(--yt-color-destructive-foreground);
+
+  --color-accent: var(--yt-color-accent);
+  --color-accent-foreground: var(--yt-color-accent-foreground);
+
+  --color-muted: var(--yt-color-muted);
+  --color-muted-foreground: var(--yt-color-muted-foreground);
+
+  --color-popover: var(--yt-color-popover);
+  --color-popover-foreground: var(--yt-color-popover-foreground);
+}

@@ -1,0 +1,74 @@
+---
+import { Icon } from 'astro-icon/components'
+
+export interface Props {
+  label?: string;
+  class?: string;
+  iconClass?: string;
+  iconName?: string;
+  initialMode?: 'system' | 'light' | 'dark' | 'light:only' | 'dark:only';
+}
+
+const {
+  label = 'Toggle between Dark and Light mode',
+  class: className = 'cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center',
+  iconClass = 'w-6 h-6',
+  iconName = 'tabler:sun',
+  initialMode = 'system',
+} = Astro.props
+---
+
+{!(initialMode.endsWith(':only')) && (
+  <button type="button" class={className} aria-label={label} data-aw-toggle-color-scheme>
+    <slot>
+      <Icon name={iconName} class={iconClass} />
+    </slot>
+  </button>
+  )}
+
+<script is:inline define:vars={{ mode: initialMode }}>
+  // Only run once
+  if (!window.darkModeInitialized) {
+    window.darkModeInitialized = true;
+
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        root.classList.add('dark')
+      } else {
+        root.classList.remove('dark')
+      }
+    }
+
+    const initialize = function() {
+      if ((mode && mode.endsWith(':only')) || (!localStorage.theme && mode !== 'system')) {
+        applyTheme(mode.replace(':only', ''))
+      } else if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        applyTheme('dark')
+      } else {
+        applyTheme('light')
+      }
+    }
+    initialize()
+
+    // Add click handlers to all toggles
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('[data-aw-toggle-color-scheme]')) {
+        if (mode.endsWith(':only')) {
+          return
+        }
+        root.classList.toggle('dark')
+        localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+      }
+    })
+
+    // Listen for view transitions
+    document.addEventListener('astro:after-swap', () => {
+      initialize()
+    })
+  }
+</script>

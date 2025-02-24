@@ -1,0 +1,194 @@
+---
+title: Carousel - HeroSlider
+category: Widget
+---
+
+import Demo from '~/components/Demo.astro';
+import { HeroSlider, HeroSlide } from 'yt-astro-ui';
+
+# Carousel - HeroSlider
+
+<div className="space-y-12">
+
+  <Demo title="Default">
+    <HeroSlider
+      items={[
+        {
+          title: 'Slide 1',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+          image: {
+            src: '~/assets/images/local_placeholder.jpeg',
+            alt: 'Lorem Ipsum',
+          },
+          callToAction: {
+            variant: 'primary',
+            text: 'Read Detail',
+            class: 'rounded-full'
+          },
+        },
+        {
+          title: 'Slide 2',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit',
+          image: {
+            src: 'https://placehold.co/800x600?text=Slide+2',
+            alt: 'Lorem Ipsum',
+          },
+          callToAction: {
+            variant: 'primary',
+            text: 'Next'
+          },
+          class: "bg-purple-800"
+        },
+        {
+          title: 'Slide 3',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+          image: {
+            src: 'https://placehold.co/800x600?text=Slide+3',
+            alt: 'Lorem Ipsum',
+          },
+        },
+      ]}
+    />
+  </Demo>
+
+  <Demo title="Single slide">
+    <HeroSlide
+      class="rounded-xl h-96"
+      title='Slide 1'
+      description='Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
+      image={{
+        src: '~/assets/images/local_placeholder.jpeg',
+        alt: 'Lorem Ipsum',
+      }}
+      callToAction={{ variant: 'primary', text: 'Read Detail' }}
+    />
+  </Demo>
+</div>
+
+## Usage
+This component uses [Swiper Element (WebComponent)](https://swiperjs.com/element) <br />
+Swiper is the most modern free and open source mobile touch slider with hardware accelerated transitions
+
+```astro
+---
+import { HeroSlider, HeroSlide } from "yt-astro-ui";
+---
+
+<!-- Default Slider -->
+<HeroSlider
+  items={[
+    {
+      title: 'Slide 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: {
+        src: '~/assets/images/local_placeholder.jpeg',
+        alt: 'Lorem Ipsum',
+      },
+      callToAction: {
+        variant: 'primary',
+        text: 'Read Detail',
+        class: 'rounded-full'
+      },
+    },
+    {
+      title: 'Slide 2',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit',
+      image: {
+        src: 'https://placehold.co/800x600?text=Slide+2',
+        alt: 'Lorem Ipsum',
+      },
+      callToAction: {
+        variant: 'primary',
+        text: 'Next'
+      },
+      class: "bg-purple-800"
+    },
+    {
+      title: 'Slide 3',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: {
+        src: 'https://placehold.co/800x600?text=Slide+3',
+        alt: 'Lorem Ipsum',
+      },
+    },
+  ]}
+/>
+
+<!-- or Single slide -->
+<HeroSlide
+  class="rounded-xl h-96"
+  title='Slide 1'
+  description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+  image={{
+    src: '~/assets/images/local_placeholder.jpeg',
+    alt: 'Lorem Ipsum',
+  }}
+  callToAction={{ text: 'Read Detail' }}
+/>
+```
+
+### Configuration
+
+See more on the [official website](https://swiperjs.com/element#updating-parameters)
+
+```astro
+<!-- With background -->
+<HeroSlider
+  items={[...]}
+>
+  <!-- Background container -->
+  <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary/10 dark:bg-card"></div>
+    </Fragment>
+</HeroSlider>
+
+<!-- With custom props -->
+<HeroSlider
+  classes={{ 
+    height: 'h-[50rem]',
+    container: 'py-4',
+    loading: 'bg-card',
+  }}
+  id='heroSection'
+  withPagination={true}
+  withNavigation={true}
+  autoplay={true}
+  isDark="true"
+  items={[...]}
+/>
+```
+
+#### Props Slider
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type       | Default    | Description |
+    |------------|------------|------------|------------|
+    | classes.height | string | h-[28rem] | set the height of the slider and its layers |
+    | classes.container | string | '' | css classes for the WidgetWrapper container |
+    | classes.loading | string | '' | css classes for loading layout |
+    | id | string | '' |  |
+    | withPagination | boolean | true | Pagination visibility |
+    | withNavigation | boolean | true | Navigation visibility |
+    | autoplay | boolean | true |  |
+    | isDark | boolean | false |  |
+    | items | array | [] | Array of slide items |
+  </div>
+</div>
+
+
+#### Props Single Slide
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type       | Default    |
+    |------------|------------|------------|
+    | class | string | '' |  |
+    | image | string | '' |  |
+    | title | string | '' |  |
+    | description | string | '' |
+    | callToAction | Object | '' |
+  </div>
+</div>
+
+

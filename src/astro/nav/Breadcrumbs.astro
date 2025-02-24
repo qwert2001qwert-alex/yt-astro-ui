@@ -1,0 +1,52 @@
+---
+import type { BreadcrumbsItem } from '.';
+import { BreadcrumbsItem } from 'yt-astro-ui';
+import { Icon } from 'astro-icon/components'
+
+/**
+ * Breadcrumbs Component
+ *
+ * @description A fully accessible breadcrumb navigation that follows WAI-ARIA guidelines
+ */
+
+interface Props {
+  /**
+   * Additional classes to apply to the breadcrumbs container
+   */
+  class?: string;
+  
+  /**
+   * Breadcrumb items to render
+   */
+  children: BreadcrumbsItem | BreadcrumbsItem[];
+
+  /**
+   * A collection of breadcrumb items used for navigation.
+   * Each item represents a step or level in the hierarchical navigation structure.
+   * Typically used to display the current location within an application or website.
+   */
+  items: BreadcrumbsItem[];
+  
+  /**
+   * Accessible label for the breadcrumb navigation
+   * @default 'Breadcrumbs'
+   */
+  ariaLabel?: string;
+}
+
+const { class: classNames = 'text-gray-600 dark:text-gray-400', ariaLabel = 'Breadcrumbs', items = [] } = Astro.props;
+---
+
+<nav class:list={['breadcrumbs', classNames]} aria-label={ariaLabel}>
+  <ol class="list flex flex-wrap gap-2 m-0 p-0 list-none" itemscope itemtype="https://schema.org/BreadcrumbList">
+    {items.length === 0 && <slot />}
+
+    {
+      items.length > 0 && items.map(item => (
+        <BreadcrumbsItem href={item.href} label={item?.label} hasIcon={!!(item?.icon || false)} {...item}>
+          {item?.icon && <Icon name={item?.icon} slot="icon" />}
+        </BreadcrumbsItem>
+      ))
+    }
+  </ol>
+</nav>

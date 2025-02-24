@@ -1,0 +1,20 @@
+---
+import { twMerge } from 'tailwind-merge'
+export interface Props {
+  title?: string;
+  class?: string;
+}
+
+const {
+  title = '',
+  class: className = ''
+} = Astro.props
+---
+
+<div class={twMerge("not-prose", className)}>
+  { title && <div class="text-2xl mb-4">{title}</div>}
+  <div class="inline px-2 py-1 text-sm bg-input text-input-foreground rounded-t-lg font-semibold">Viewport</div>
+  <div class="border-2 border-input border-dashed">
+    <slot/>
+  </div>
+</div>

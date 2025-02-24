@@ -1,0 +1,75 @@
+---
+title: Button
+category: UI
+---
+# Button
+
+import Demo from '~/components/Demo.astro';
+import { Button } from 'yt-astro-ui';
+
+<div className="space-y-12">
+  <Demo title="Default">
+    <div className="flex flex-wrap gap-2">
+      {['default', 'primary', 'accent', 'destructive', 'outline', 'ghost', 'link'].map(item => (
+        <Button variant={item} class="rounded-full capitalize">{item}</Button>
+      ))}
+    </div>
+  </Demo>
+
+  <Demo title="Size: sm">
+    <div className="flex flex-wrap gap-2">
+      {['default', 'primary', 'accent', 'destructive', 'outline', 'ghost', 'link'].map(item => (
+        <Button size="sm" variant={item} class="rounded-full capitalize">{item}</Button>
+      ))}
+    </div>
+  </Demo>
+
+  <Demo title="Size: lg">
+    <div className="flex flex-wrap gap-2">
+      {['default', 'primary', 'accent', 'destructive', 'outline', 'ghost', 'link'].map(item => (
+        <Button size="lg" variant={item} class="rounded-full capitalize">{item}</Button>
+      ))}
+    </div>
+  </Demo>
+</div>
+
+
+## Usage
+The Dark mode component provides a toggle for switching between light and dark color schemes. <br /> It uses system preferences, persists user choices, and follows accessibility best practices.
+
+```astro
+---
+import { Button } from 'yt-astro-ui';
+---
+
+<!-- Default -->
+<Button>Default</Button>
+
+<!-- With variants -->
+<Button variant="primary">Primary</Button>
+<Button variant="accent">Accent</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+
+<!-- With size -->
+<Button size="sm">Button</Button>
+
+<!-- With custom class -->
+<Button class="rounded-sm">Default</Button>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type       | Default    |
+    |------------|------------|------------|
+    | variant | default \| primary \| accent \| destructive \| outline \| ghost \| link | default |
+    | size | default \| sm \| lg \| icon  | default |
+    | class | string | rounded-full |
+  </div>
+</div>
+
+

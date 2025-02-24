@@ -1,0 +1,85 @@
+---
+import "~/assets/styles/tailwind.css";
+import "~/assets/styles/docs.css";
+
+import { Icon } from 'astro-icon/components'
+import { fetchPosts, getCategories } from '~/utils/content';
+import { DarkMode } from 'yt-astro-ui';
+import { twMerge } from 'tailwind-merge'
+
+const posts = await fetchPosts();
+const categories = Object.entries(await getCategories()).sort().map(([key, value]) => {
+    return {
+      slug: key,
+      title: value?.title,
+      posts: posts.filter((post) => post.category?.slug === key).sort((a, b) => b.order - a.order)
+    }
+  }
+);
+
+export interface Props {
+  title?: string;
+}
+
+const { title = "Default" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astro UI Components - Demo</title>
+  </head>
+
+  <body class="antialiased bg-background text-foreground tracking-tight">
+  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full flex flex-col justify-between px-3 py-4">
+      <div class="flex-1 overflow-y-auto">
+        <a href="/" class="flex items-center gap-2 mb-4 py-2 text-2xl text-primary font-bold">
+          { Astro.url.pathname !== '/' && <Icon name="tabler:arrow-left" class="size-6" /> }
+          Astro UI
+        </a>
+        <ul class="space-y-6 font-medium">
+          {categories.map(category => (
+            <li>
+              <!-- Category Title -->
+              <p class="font-medium  mb-2 capitalize">{category.title}</p>
+              <ul class="space-y- pl-4 border-l-2 border-gray-300 dark:border-gray-700">
+                {category.posts && category.posts.map((post) => (
+                  <!-- Link to Post -->
+                  <li>
+                    <a href={`/docs/${post.slug}`} class={twMerge("text-gray-700 dark:text-gray-400 hover:text-primary text-sm", Astro.url.pathname.split('/').includes(post.slug) && "text-primary dark:text-primary font-semibold")}>
+                      {post.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="text-sm pt-4">
+        Made in
+        <a href="https://yatoday.es" target="_blank" rel="nofollow" class="text-primary font-semibold hover:dark:text-emerald-200 link">Yatoday</a>
+      </div>
+    </div>
+  </aside>
+  <div class="sm:ml-64 flex flex-col">
+    <div class="flex items-center justify-between px-6">
+      <div class="py-4 text-2xl font-medium">
+        { title }
+      </div>
+      <DarkMode />
+    </div>
+    <div class="p-4 sm:p-10 bg-card text-card-foreground rounded-l-2xl prose-sm dark:prose-invert lg:prose max-w-none!">
+      
+      
+      <slot />
+    </div>
+  </div>
+  </body>
+</html>

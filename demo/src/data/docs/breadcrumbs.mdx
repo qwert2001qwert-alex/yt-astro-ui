@@ -1,0 +1,129 @@
+---
+title: Breadcrumbs
+category: UI
+---
+# Breadcrumbs
+
+import { Icon } from 'astro-icon/components'
+import Demo from '~/components/Demo.astro';
+import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
+
+<div className="space-y-12">
+  <Demo title="Default">
+    <Breadcrumbs>
+      <BreadcrumbsItem href="/" label="Home" />
+      <BreadcrumbsItem href="/products" label="Products" />
+      <BreadcrumbsItem label="Current Page" currentPage={true} />
+    </Breadcrumbs>
+  </Demo>
+  
+  <Demo title="With icon variant">
+    <Breadcrumbs>
+      <BreadcrumbsItem href="/" label="Home" hasIcon>
+        <Icon name="tabler:home" slot="icon" />
+      </BreadcrumbsItem>
+      <BreadcrumbsItem href="/products" label="Products" />
+      <BreadcrumbsItem label="Current Page" currentPage={true} />
+    </Breadcrumbs>
+  </Demo>
+  
+  <Demo title="Custom separator variant">
+    <Breadcrumbs>
+      <BreadcrumbsItem href="/" label="Home" hasIcon>
+        <Icon name="tabler:home" slot="icon" />
+        <span slot="separator" class="separator" aria-hidden="true">
+          <Icon name="tabler:chevrons-right" />
+        </span>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem href="/docs" label="Documentation">
+        <span slot="separator" class="separator" aria-hidden="true">
+          <Icon name="tabler:chevrons-right" />
+        </span>
+      </BreadcrumbsItem>
+      <BreadcrumbsItem label="Current Page" currentPage={true} />
+    </Breadcrumbs>
+  </Demo>
+</div>
+
+
+## Usage
+
+Use the currentPage prop to indicate the current page in the breadcrumb trail. This will render it as a `<span>` instead of a link and add the appropriate ARIA attributes.
+
+```astro
+---
+import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
+---
+
+<!-- Default -->
+<Breadcrumbs>
+  <BreadcrumbsItem href="/" label="Home" />
+  <BreadcrumbsItem href="/products" label="Products" />
+  <BreadcrumbsItem label="Current Page" currentPage={true} />
+</Breadcrumbs>
+
+<!-- Home icon variant -->
+<Breadcrumbs>
+  <BreadcrumbsItem href="/" label="Home" hasIcon>
+    <Icon name="tabler:home" slot="icon" />
+  </BreadcrumbsItem>
+  <BreadcrumbsItem href="/products" label="Products" />
+  <BreadcrumbsItem label="Current Page" currentPage={true} />
+</Breadcrumbs>
+
+<!-- Custom separator variant -->
+<Breadcrumbs>
+  <BreadcrumbsItem href="/" label="Home" hasIcon>
+    <Icon name="tabler:home" slot="icon" />
+    <span slot="separator" class="separator" aria-hidden="true">
+      <Icon name="tabler:chevrons-right" />
+    </span>
+  </BreadcrumbsItem>
+  <BreadcrumbsItem href="/docs" label="Documentation">
+    <span slot="separator" class="separator" aria-hidden="true">
+      <Icon name="tabler:chevrons-right" />
+    </span>
+  </BreadcrumbsItem>
+  <BreadcrumbsItem label="Current Page" currentPage={true} />
+</Breadcrumbs>
+
+<!-- Array props -->
+<Breadcrumbs
+  items={[
+    {href: '/', icon: 'tabler:home'},
+    {href: '/products', label: 'Products'},
+    {href: '/products', label: 'Current Page', currentPage: true},
+  ]}
+/>
+```
+
+## Props
+
+### Breadcrumbs
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type       | Default    | Description |
+    |------------|------------|------------|------------|
+    | class | string | '' | Additional CSS classes to apply to the breadcrumbs wrapper |
+    | ariaLabel | string | 'Breadcrumbs' | The label for the breadcrumbs navigation |
+  </div>
+</div>
+
+
+
+
+### BreadcrumbsItem
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type       | Default    | Description |
+    |------------|------------|------------|------------|
+    | href | string | '#' | The URL the breadcrumb item links to |
+    | label | string | 'Breadcrumb' | The text to display (or screen reader text when using icons) |
+    | currentPage | boolean | false | Whether this item represents the current page |
+    | hasIcon | boolean | false | Whether this item displays an icon instead of text |
+    | class | string | '' | Additional CSS classes to apply to the item |
+  </div>
+</div>
+

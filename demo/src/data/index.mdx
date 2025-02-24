@@ -1,0 +1,117 @@
+# About
+
+Everything you need to rapidly build content-driven websites. Components, blocks, layouts and complete page generation.
+
+
+### Why we built it
+
+After repeatedly encountering the same challenges in our company’s client projects, we decided to build this library. After successfully using it in production websites, we decided to open-source it to help others facing similar problems.
+
+
+<hr />
+## Installation
+
+```shell
+npm install yt-astro-ui
+```
+or
+```shell
+pnpm i yt-astro-ui
+# or
+yarn add yt-astro-ui
+# or
+bun add yt-astro-ui
+```
+
+<hr />
+
+## Usage
+
+```astro
+---
+// Import components & widgets
+import { HeroSlider, Button } from "yt-astro-ui";
+
+// Import types
+import type { MetaData } from "yt-astro-ui/types";
+
+// Import utilities
+import { cn } from "yt-astro-ui/utils";
+---
+
+<Button variant="primary">Send</Button>
+```
+
+<hr />
+
+## Style
+
+```css
+
+/* 
+ * Define theme variables
+ * Read more: https://tailwindcss.com/docs/colors#referencing-other-variables
+ */
+:root {
+  /* Colors */
+  --yt-color-background: #f3f3f6;
+  --yt-color-foreground: #2F3133;
+  --yt-color-card: hsl(0 0% 100%);
+  --yt-color-card-foreground: hsl(0 0% 3.9%);
+  --yt-color-popover: hsl(0 2% 21%);
+  --yt-color-popover-foreground: hsl(0 0% 100%);
+  --yt-color-primary: rgb(192 38 211);
+  --yt-color-primary-foreground: hsl(0 0% 100%);
+  --yt-color-secondary: hsl(240 4.8% 95.9%);
+  --yt-color-secondary-foreground: hsl(240 5.9% 10%);
+  --yt-color-muted: hsl(240 4.8% 95.9%);
+  --yt-color-muted-foreground: hsl(0 0% 28.24%);
+  --yt-color-accent: black;
+  --yt-color-accent-foreground: white;
+  --yt-color-destructive: hsl(0 72.22% 50.59%);
+  --yt-color-destructive-foreground: hsl(0 0% 98%);
+
+  --yt-color-border: hsl(0 0% 89.8%);
+  --yt-color-input: hsl(0 0% 89.8%);
+  --yt-color-ring: hsl(0 0% 3.9%);
+
+  --yt-radius: 0.5rem;
+
+  --aw-color-bg-page: rgb(255 255 255);
+  --aw-color-bg-page-dark: hsl(0 0% 10%);
+
+  ::selection {
+    background-color: lavender;
+  }
+}
+
+.dark {
+  /* Colors */
+  --yt-color-background: #0c0e11;
+  --yt-color-foreground: #C6C6C9;
+  --yt-color-card: hsl(220 6% 10%);
+  --yt-color-card-foreground: hsl(0 0% 98%);
+  --yt-color-popover: hsl(0 0% 3.9%);
+  --yt-color-popover-foreground: hsl(0 0% 98%);
+  --yt-color-primary: rgb(110 231 183);
+  --yt-color-primary-foreground: hsl(0 0% 100%);
+  --yt-color-secondary: hsl(25 100% 90%);
+  --yt-color-secondary-foreground: hsl(25 100% 40%);
+  --yt-color-muted: hsl(240 3.7% 15.9%);
+  --yt-color-muted-foreground: hsl(240 5% 70%);
+  --yt-color-accent: white;
+  --yt-color-accent-foreground: black;
+  --yt-color-destructive: hsl(0 62.8% 30.6%);
+  --yt-color-destructive-foreground: hsl(0 0% 98%);
+  --yt-color-border: hsl(0 0% 14.9%);
+  --yt-color-input: hsl(0 0% 25%);
+  --yt-color-ring: hsl(0 0% 83.1%);
+
+  --aw-color-bg-page: rgb(3 6 32);
+
+  ::selection {
+    background-color: black;
+    color: snow;
+  }
+}
+```

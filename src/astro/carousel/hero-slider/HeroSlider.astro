@@ -1,0 +1,165 @@
+---
+import { twMerge } from 'tailwind-merge';
+import WidgetWrapper from 'yt-astro-ui/astro/container/WidgetWrapper.astro';
+import HeroSlide from './HeroSlide.astro';
+
+const {
+  items = [],
+  isAfterContent = false,
+
+  id = 'heroSection',
+  withPagination = true,
+  withNavigation = true,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+  ...rest
+} = Astro.props;
+
+const {
+  container: containerClass = '',
+  loading: loadingIndicatorClass = '',
+  height: wrapClass = 'h-[28rem]',
+} = classes;
+---
+<style>
+  .btn-navigation:after, .btn-navigation:before {
+    display: block;
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+
+  .btn-navigation:before {
+    transform: rotate(45deg) translate(-50%, -50%);
+  }
+
+  .btn-navigation:after {
+    transform: rotate(-45deg) translate(-50%, -50%);
+  }
+
+  .btn-prev {
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    left: 24px;
+  }
+
+  .btn-next {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 24px;
+  }
+
+  swiper-container {
+    --swiper-theme-color: white;
+    --swiper-pagination-bullet-size: 0.8rem;
+    --swiper-pagination-bullet-border-radius: 50%;
+    --swiper-pagination-bullet-inactive-color: hsla(0, 0%, 100%, .5);
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 4px;
+    --swiper-pagination-top: theme(spacing.4);
+    --swiper-pagination-right: theme(spacing.12);
+
+    display: block;
+    transition: opacity;
+  }
+
+  /* pagination */
+  swiper-container::part(pagination) {
+    position: absolute;
+    text-align: right;
+    transition: 300ms opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+    left: auto;
+    right: var(--swiper-pagination-right, 1.5rem);
+    top: var(--swiper-pagination-top, auto);
+    bottom: var(--swiper-pagination-bottom, 1.5rem);
+  }
+
+  swiper-container::part(bullet),
+  swiper-container::part(bullet-active) {
+    width: var(--swiper-pagination-bullet-size, 8px);
+    height: var(--swiper-pagination-bullet-size, 8px);
+    display: inline-block;
+    border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+    background: var(--swiper-pagination-bullet-inactive-color, #000);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.2);
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 4px);
+
+    &:only-child {
+      display: none !important;
+    }
+  }
+
+  swiper-container::part(bullet-active) {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: var(--swiper-pagination-color, var(--swiper-theme-color));
+  }
+
+  /* TODO: bug - @variant md { doesn't work */
+  @media (width >= 48rem) {
+    swiper-container {
+      --swiper-pagination-top: auto;
+      --swiper-pagination-bottom: theme(spacing.4);
+      --swiper-pagination-right: theme(spacing.6);
+    }
+  }
+</style>
+
+
+<WidgetWrapper id={id} isDark={isDark} bg={bg} containerClass={`${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : 'px-0 md:px-6 py-6 md:py-8 lg:py-8'} ${containerClass ?? ''}`}>
+  <div class="relative md:rounded-xl overflow-hidden group">
+    <swiper-container
+      class={twMerge('', wrapClass)}
+      pagination={withPagination}
+      centered-slides="true"
+      space-between="10"
+      slides-per-view="1.2"
+      navigation={ withNavigation ? JSON.stringify({
+          nextEl: '.btn-next',
+          prevEl: '.btn-prev',
+        }) : false
+      }
+      breakpoints={
+        JSON.stringify({
+            640: {
+              centeredSlides: false,
+              spaceBetween: 20,
+              slidesPerView: 1
+            },
+          },
+        )}
+      {...rest}
+    >
+      {items.map((item) => (
+        <swiper-slide>
+          <HeroSlide {...item} class={twMerge('rounded-xl text-white', item.class, wrapClass)} />
+        </swiper-slide>
+      ))}
+    </swiper-container>
+
+    <!-- If we need navigation buttons -->
+    {withNavigation && (
+      <div class="btn-navigation btn-prev hidden lg:block cursor-pointer absolute z-10 w-10 h-10 bg-transparent border-2 border-white rounded-full shadow-sm transition-opacity opacity-20 hover:opacity-100 group-hover:opacity-100"></div>
+      <div class="btn-navigation btn-next hidden lg:block cursor-pointer absolute z-10 w-10 h-10 bg-transparent border-2 border-white rounded-full shadow-sm transition-opacity opacity-20 hover:opacity-100 group-hover:opacity-100"></div>
+    )}
+
+    <!-- Loading indicator -->
+    <div class={twMerge("absolute top-0 left-0 w-full h-full flex items-center justify-center", loadingIndicatorClass)}>
+      <svg class="animate-spin h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
+  </div>
+</WidgetWrapper>
+
+<script>
+  import { register } from 'swiper/element/bundle';
+  register();
+</script>

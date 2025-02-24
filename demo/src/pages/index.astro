@@ -1,0 +1,7 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import * as post from '~/data/index.mdx';
+---
+<Layout title="Index">
+  {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
+</Layout>

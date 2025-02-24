@@ -1,0 +1,58 @@
+---
+title: DarkMode
+category: UI
+---
+
+import Demo from '~/components/Demo.astro';
+import { DarkMode } from 'yt-astro-ui';
+
+# DarkMode
+
+<Demo>
+  <DarkMode />
+</Demo>
+
+## Usage
+The Dark mode component provides a toggle for switching between light and dark color schemes. <br /> It uses system preferences, persists user choices, and follows accessibility best practices.
+
+```astro
+---
+import { DarkMode } from 'yt-astro-ui';
+---
+
+<!-- Default with system preference -->
+<DarkMode />
+
+<!-- With custom options -->
+<DarkMode
+  initialMode="system"
+  label="Toggle between Dark and Light mode"
+  class="size=12"
+  iconName="tabler:sun"
+  iconClass="text-red-500"
+/>
+
+
+<!-- With custom slot content -->
+<DarkMode> Toggle </DarkMode>
+
+<!-- or icon -->
+<DarkMode> 
+  <Icon name="tabler:sun" class="size-12" />
+</DarkMode>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type       | Default    |
+    |------------|------------|------------|
+    | initialMode | system \| light \| dark \| light:only \| dark:only | system |
+    | label | string | Toggle between Dark and Light mode |
+    | class | string | Row 3 Cell |
+    | iconName | string | '' |
+    | iconClass | string | '' |
+  </div>
+</div>
+

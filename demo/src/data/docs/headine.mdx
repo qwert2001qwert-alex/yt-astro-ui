@@ -1,0 +1,69 @@
+---
+title: Headline
+category: UI
+---
+# Headline
+
+import Demo from '~/components/Demo.astro';
+import { Headline } from 'yt-astro-ui';
+
+<div className="space-y-12">
+  <Demo title="Default">
+    <Headline 
+      title="Why choose Astro"
+      subtitle="Each of the following features enhances Astro's value proposition."
+      tagline="Services"
+    />
+  </Demo>
+</div>
+
+
+## Usage
+
+```astro
+---
+import { Headline } from 'yt-astro-ui';
+---
+
+<!-- Default -->
+<Headline 
+  title="Why choose Astro"
+/>
+
+<Headline 
+  title="Why choose Astro"
+  subtitle="Each of the following features enhances Astro's value proposition."
+  tagline="Services"
+  classes={{ 
+    container: 'text-left',
+    title: 'text-xl md:text-5xl',
+    subtitle: 'text-red-500',
+    tagline: 'text-sm',
+  }}
+/>
+
+<!-- Props -->
+<Headline 
+  title={title} 
+  subtitle={subtitle} tagline={tagline} 
+  classes={classes?.headline as Record<string, string>}
+/>
+```
+
+## Props
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop      | Type      | Default   |
+    |-----------|-----------|-----------|
+    | title | string | '' |
+    | subtitle | string | '' |
+    | tagline | string | '' |
+    | classes | `Record<string, string>` | '' |
+    | classes.container | string | '' |
+    | classes.title | string | '' |
+    | classes.subtitle | string | '' |
+    | classes.tagline | string | '' |
+  </div>
+</div>
+
+
