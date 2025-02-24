@@ -4,8 +4,7 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "jsx": "preserve",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "yt-astro-ui/*": ["src/*"]
