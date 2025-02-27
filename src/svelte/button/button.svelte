@@ -4,7 +4,7 @@
 	import { type VariantProps, tv } from "tailwind-variants";
 
 	export const buttonVariants = tv({
-		base: "ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
+		base: "btn rounded-btn ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
 		variants: {
 			variant: {
 				default: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
@@ -16,9 +16,9 @@
 				link: "!px-0 underline-offset-4 underline",
 			},
 			size: {
-				default: "px-8 h-12",
+				default: "px-6 sm:px-8 h-10 sm:h-12",
 				sm: "h-8 px-4 text-xs sm:h-10 sm:px-6 sm:text-sm",
-				lg: "h-14 px-8",
+				lg: "h-14 px-8 text-base sm:text-lg md:text-xl",
 				icon: "size-10",
 			},
 		},
@@ -43,7 +43,7 @@
 	import { cn } from "yt-astro-ui/utils";
 
 	let {
-		class: className = "rounded-full",
+		class: className = "",
 		variant = "default",
 		size = "default",
 		ref = $bindable(null),

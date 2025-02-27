@@ -106,3 +106,7 @@
   --color-popover: var(--yt-color-popover);
   --color-popover-foreground: var(--yt-color-popover-foreground);
 }
+
+@theme {
+  --radius-btn: 9999px;
+}
