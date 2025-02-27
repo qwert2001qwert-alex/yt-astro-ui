@@ -2,10 +2,11 @@
 title: Item Grid 0
 category: UI
 ---
-# Item Grid 0
 
 import Demo from '~/components/Demo.astro';
 import { ItemGrid0 } from 'yt-astro-ui';
+
+# Item Grid 0
 
 ## Usage
 
@@ -26,9 +27,10 @@ import { ItemGrid0 } from 'yt-astro-ui';
 ---
 
 <ItemGrid0 columns={4} classes={{container: 'p-6'}}>
-  {Array.from({ length: 12 }, (_, i) => i).map(i => (
-    <div>{i+1}</div>
-  ))}
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
 </ItemGrid0>
 ```
 
@@ -42,5 +44,3 @@ import { ItemGrid0 } from 'yt-astro-ui';
     | columns | number | 1 |
   </div>
 </div>
-
-
