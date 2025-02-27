@@ -1,6 +1,5 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
-import { BackToTopButton, ItemGrid0 } from '../index'
 
 export interface Taxonomy {
   slug: string;

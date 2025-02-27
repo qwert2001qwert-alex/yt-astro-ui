@@ -9,5 +9,5 @@ const metadata = {
 ---
 
 <PageLayout metadata={metadata} title="Index">
-  {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
+  {post.Content ? <post.Content /> : <Fragment set:html={post?.content || ''} />}
 </PageLayout>
