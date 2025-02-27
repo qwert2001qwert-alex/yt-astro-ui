@@ -6,17 +6,44 @@ export interface Taxonomy {
   title: string;
 }
 
+export interface MetaData {
+  title?: string;
+  ignoreTitleTemplate?: boolean;
+
+  canonical?: string;
+
+  robots?: MetaDataRobots;
+
+  description?: string;
+
+  openGraph?: MetaDataOpenGraph;
+  twitter?: MetaDataTwitter;
+}
+
+export interface MetaDataRobots {
+  index?: boolean;
+  follow?: boolean;
+}
+
 export interface MetaDataImage {
   url: string;
   width?: number;
   height?: number;
 }
 
-/*export interface Image {
-  src: string;
-  alt?: string;
-  aspectRatio?: string;
-}*/
+export interface MetaDataOpenGraph {
+  url?: string;
+  siteName?: string;
+  images?: Array<MetaDataImage>;
+  locale?: string;
+  type?: string;
+}
+
+export interface MetaDataTwitter {
+  handle?: string;
+  site?: string;
+  cardType?: string;
+}
 
 export interface Video {
   src: string;
@@ -45,6 +72,28 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   tagline?: string;
   classes?: Record<string, string>;
 }*/
+
+/**
+ * Layout
+ *
+ * @param _props - Record<string, any>
+ * @param _props.metadata
+ */
+type Layout = typeof import('../index.js').Layout
+export const Layout: Layout;
+
+
+/**
+ * Button
+ *
+ * @param _props - Record<string, any>
+ * @param _props.variant - Optional. Set button variant: default | primary | accent | destructive | outline | ghost | link
+ * @param _props.size -  Optional. Set size button: default | sm | lg | icon 
+ * @param _props.class - Optional. CSS class names
+ */
+type Button = typeof import('../index.js').Button
+export const Button: Button;
+
 
 /**
  * Image

@@ -8,6 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 import type { AstroIntegration } from 'astro';
 
 import svelte from '@astrojs/svelte';
+import vendor from 'yt-astro-ui/integration';
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
@@ -15,27 +16,36 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), icon({
-    include: {
-      tabler: ['*'],
-    },
-    iconDir: "src/assets/icons",
-  }), ...whenExternalScripts(() =>
-    partytown({
-      config: { forward: ['dataLayer.push'] },
-    })
-  ), compress({
-    CSS: true,
-    HTML: {
-      'html-minifier-terser': {
-        removeAttributeQuotes: false,
+  integrations: [
+    mdx(), 
+    icon({
+      include: {
+        tabler: ['*'],
       },
-    },
-    Image: false,
-    JavaScript: true,
-    SVG: false,
-    Logger: 1,
-  }), svelte()],
+      iconDir: "src/assets/icons",
+    }), 
+    ...whenExternalScripts(() =>
+      partytown({
+        config: { forward: ['dataLayer.push'] },
+      })
+    ), 
+    compress({
+      CSS: true,
+      HTML: {
+        'html-minifier-terser': {
+          removeAttributeQuotes: false,
+        },
+      },
+      Image: false,
+      JavaScript: true,
+      SVG: false,
+      Logger: 1,
+    }), 
+    svelte(),
+    vendor({
+      config: './src/config.yaml',
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()]
   }

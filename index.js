@@ -7,6 +7,8 @@ export { default as Headline } from './src/astro/headline/Headline.astro';
 
 export { default as Image } from './src/astro/image/Image.astro';
 
+export { default as Layout } from './src/astro/layouts/Layout.astro';
+
 /* Carousels */
 export { default as HeroSlider } from './src/astro/carousel/hero-slider/HeroSlider.astro';
 export { default as HeroSlide } from './src/astro/carousel/hero-slider/HeroSlide.astro';

@@ -6,7 +6,7 @@ import merge from 'lodash.merge';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost } from '~/utils/content';
 import type { MetaData } from '~/types';
-import Layout from '~/layouts/Layout.astro'
+import PageLayout from '~/layouts/PageLayout.astro'
 
 export const prerender = true;
 
@@ -30,6 +30,6 @@ const metadata = merge(
 
 ---
 
-<Layout title={post?.category.title}>
+<PageLayout metadata={metadata} title={post?.category?.title}>
   {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
-</Layout>
+</PageLayout>

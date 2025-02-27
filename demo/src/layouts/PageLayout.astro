@@ -4,8 +4,9 @@ import "~/assets/styles/docs.css";
 
 import { Icon } from 'astro-icon/components'
 import { fetchPosts, getCategories } from '~/utils/content';
-import { DarkMode } from 'yt-astro-ui';
-import { twMerge } from 'tailwind-merge'
+import Favicons from '~/components/Favicons.astro';
+import { Layout, DarkMode, type MetaData } from 'yt-astro-ui'
+import { twMerge } from 'tailwind-merge';
 
 const posts = await fetchPosts();
 const categories = Object.entries(await getCategories()).sort().map(([key, value]) => {
@@ -18,23 +19,15 @@ const categories = Object.entries(await getCategories()).sort().map(([key, value
 );
 
 export interface Props {
+  metadata?: MetaData;
   title?: string;
 }
 
-const { title = "Default" } = Astro.props;
+const { metadata, title = "Default" } = Astro.props;
 ---
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Astro UI Components - Demo</title>
-  </head>
-
-  <body class="antialiased bg-background text-foreground tracking-tight">
+<Layout metadata={metadata}>
+  <Favicons slot="favicons" />
+  
   <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
     <div class="h-full flex flex-col justify-between px-3 py-4">
       <div class="flex-1 overflow-y-auto">
@@ -61,7 +54,7 @@ const { title = "Default" } = Astro.props;
           ))}
         </ul>
       </div>
-      
+
       <div class="text-sm pt-4">
         Made in
         <a href="https://yatoday.es" target="_blank" rel="nofollow" class="text-primary font-semibold hover:dark:text-emerald-200 link">Yatoday</a>
@@ -76,10 +69,7 @@ const { title = "Default" } = Astro.props;
       <DarkMode />
     </div>
     <div class="p-4 sm:p-10 bg-card text-card-foreground rounded-l-2xl prose-sm dark:prose-invert lg:prose max-w-none!">
-      
-      
       <slot />
     </div>
   </div>
-  </body>
-</html>
+</Layout>

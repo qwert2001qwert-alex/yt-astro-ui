@@ -1,0 +1,37 @@
+---
+import { I18N } from 'vendor:config';
+
+import CommonMeta from 'yt-astro-ui/astro/seo/CommonMeta.astro';
+import Metadata from 'yt-astro-ui/astro/seo/Metadata.astro';
+import SiteVerification from 'yt-astro-ui/astro/seo/SiteVerification.astro';
+import Analytics from 'yt-astro-ui/astro/seo/analytics/Analytics.astro';
+
+import type { MetaData as MetaDataType } from 'yt-astro-ui/types';
+
+export interface Props {
+  metadata?: MetaDataType;
+}
+
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+  <head>
+    <CommonMeta />
+    <Metadata {...metadata} />
+    
+    <slot name="favicons" />
+    <slot name="styles" />
+    
+    <SiteVerification />
+    <Analytics />
+  </head>
+
+  <body class="antialiased bg-background text-foreground tracking-tight">
+    <slot />
+
+    <slot name="scripts" />
+  </body>
+</html>

@@ -1,7 +1,13 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
 import * as post from '~/data/index.mdx';
+
+const metadata = {
+  title: 'Astro UI — Free template for creating websites with Astro + Tailwind CSS',
+  ignoreTitleTemplate: true,
+};
 ---
-<Layout title="Index">
+
+<PageLayout metadata={metadata} title="Index">
   {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
-</Layout>
+</PageLayout>

@@ -73,6 +73,8 @@
     background-color: black;
     color: snow;
   }
+  
+  color-scheme: dark;
 }
 
 @theme inline {
