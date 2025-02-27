@@ -2,7 +2,8 @@
 import "~/assets/styles/tailwind.css";
 import "~/assets/styles/docs.css";
 
-import { Icon } from 'astro-icon/components'
+import { dependencies } from '../../package.json';
+import { Icon } from 'astro-icon/components';
 import { fetchPosts, getCategories } from '~/utils/content';
 import Favicons from '~/components/Favicons.astro';
 import { Layout, DarkMode, type MetaData } from 'yt-astro-ui'
@@ -31,7 +32,7 @@ const { metadata, title = "Default" } = Astro.props;
   <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
     <div class="h-full flex flex-col justify-between px-3 py-4">
       <div class="flex-1 overflow-y-auto">
-        <a href="/" class="flex items-center gap-2 mb-4 py-2 text-2xl text-primary font-bold">
+        <a href="/" class="flex items-end gap-4 mb-4 py-2 text-2xl text-primary font-bold">
           { Astro.url.pathname !== '/' && <Icon name="tabler:arrow-left" class="size-6" /> }
           Astro UI
         </a>
@@ -66,7 +67,12 @@ const { metadata, title = "Default" } = Astro.props;
       <div class="py-4 text-2xl font-medium">
         { title }
       </div>
-      <DarkMode />
+      
+      <div class="flex items-center gap-4">
+        <span>{dependencies['yt-astro-ui'].replace("^", 'v: ') || '0.0.1'}</span>
+        <DarkMode />
+      </div>
+      
     </div>
     <div class="p-4 sm:p-10 bg-card text-card-foreground rounded-l-2xl prose-sm dark:prose-invert lg:prose max-w-none!">
       <slot />
