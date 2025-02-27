@@ -1,0 +1,58 @@
+---
+title: Widget Wrapper
+category: UI
+---
+import Demo from '~/components/Demo.astro';
+import { WidgetWrapper } from 'yt-astro-ui';
+
+# Widget Wrapper
+
+## Usage
+
+<div className="space-y-12">
+  <Demo title="Default">
+    <WidgetWrapper>
+      <div>Content</div>
+    </WidgetWrapper>
+  </Demo>
+</div>
+
+
+```astro
+---
+import { WidgetWrapper } from 'yt-astro-ui';
+---
+
+<!-- Default -->
+<WidgetWrapper>
+  <div>Content</div>
+</WidgetWrapper>
+
+<!-- With backgound and props -->
+<WidgetWrapper
+  as="div"
+  id="hero"
+  containerClass="text-center text-base"
+>
+  <div>Content</div>
+  <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary/10 dark:bg-card"></div>
+    </Fragment>
+</WidgetWrapper>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop | Type | Default |
+    |-----------|------------|------------|
+    | id | string | undefined |
+    | isDark | bool | false |
+    | containerClass | string | '' |
+    | bg | string | undefined |
+    | as | string | 'section' |
+  </div>
+</div>
+
+

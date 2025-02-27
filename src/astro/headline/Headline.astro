@@ -1,37 +1,38 @@
 ---
-import type { Headline as Props } from 'yt-astro-ui/types';
-import { cn } from "yt-astro-ui/utils";
+import type { IHeadline as Props } from 'yt-astro-ui/types'
+import { cn } from 'yt-astro-ui/utils'
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   classes = {},
-} = Astro.props;
+} = Astro.props
 
 const {
   container: containerClass = 'max-w-3xl md:mx-auto ',
   title: titleClass = ' ',
   subtitle: subtitleClass = '',
   tagline: taglineClass = '',
-} = classes;
+} = classes
 ---
 
 {
   (title || subtitle || tagline) && (
     <!-- Headline -->
-    <div class={cn('mb-8 md:mb-12 text-center', containerClass)}>
-      {tagline && (
-        <p class={cn("text-base text-muted-foreground font-bold tracking-wide uppercase", taglineClass)} set:html={tagline} />
-      )}
-      {title && (
-        <h2
-          class={cn('font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl text-foreground', titleClass)}
-          set:html={title}
-        />
-      )}
+  <div class={cn('mb-8 md:mb-12 text-center', containerClass)}>
+    {tagline && (
+      <p class={cn('text-base text-muted-foreground font-bold tracking-wide uppercase', taglineClass)}
+         set:html={tagline} />
+    )}
+    {title && (
+      <h2
+        class={cn('font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl md:text-4xl text-foreground', titleClass)}
+        set:html={title}
+      />
+    )}
 
-      {subtitle && <p class={cn('mt-4 text-muted-foreground text-xl', subtitleClass)} set:html={subtitle} />}
-    </div>
-  )
-}
+    {subtitle && <p class={cn('mt-4 text-muted-foreground text-xl', subtitleClass)} set:html={subtitle} />}
+  </div>
+    )
+  }

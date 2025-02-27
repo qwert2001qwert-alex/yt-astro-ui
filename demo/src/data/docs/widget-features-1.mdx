@@ -1,0 +1,181 @@
+---
+title: Features 1
+category: Widget
+---
+import Demo from '~/components/Demo.astro';
+import { Features1 } from 'yt-astro-ui';
+
+# Features 1
+
+## Usage
+
+<div className="space-y-12">
+  <Demo title="Full of content">
+    <Features1
+      title="Lorem Ipsum"
+      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+      tagline="Features"
+      columns={3}
+      items={[
+        {
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
+          callToAction: { href: '/', text: 'Read more' },
+          links: [
+            { href: '/', text: 'Additional link 1' },
+            { href: '/', text: 'Additional link 2' },
+            { href: '/', text: 'Additional link 3' },
+          ],
+        },
+        {
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
+          callToAction: { href: '/', text: 'Read more' },
+          links: [
+            { href: '/', text: 'Additional link 1' },
+            { href: '/', text: 'Additional link 2' },
+            { href: '/', text: 'Additional link 3' },
+          ],
+        },
+        {
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
+          callToAction: { href: '/', text: 'Read more' },
+          links: [
+            { href: '/', text: 'Additional link 1' },
+            { href: '/', text: 'Additional link 2' },
+            { href: '/', text: 'Additional link 3' },
+          ],
+        },
+      ]}
+    />
+  </Demo>
+
+  <Demo title="Custom">
+    <Features1
+      title="Lorem Ipsum"
+      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+      columns={3}
+      items={[
+        {
+          icon: 'tabler:home',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          callToAction: { href: '/', text: 'Read more' },
+        },
+        {
+          icon: 'tabler:tractor',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          callToAction: { href: '/', text: 'Read more' },
+        },
+        {
+          icon: 'tabler:circle-chevrons-down',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        },
+      ]}
+    />
+  </Demo>
+</div>
+
+
+```astro
+---
+import { Features1 } from 'yt-astro-ui';
+---
+
+<!-- Full of content -->
+<Features1
+  title="Lorem Ipsum"
+  subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  tagline="Features"
+  columns={3}
+  items={[
+    {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
+      callToAction: { href: '/', text: 'Read more' },
+      links: [
+        { href: '/', text: 'Additional link 1' },
+        { href: '/', text: 'Additional link 2' },
+        { href: '/', text: 'Additional link 3' },
+      ],
+    },
+    {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
+      callToAction: { href: '/', text: 'Read more' },
+      links: [
+        { href: '/', text: 'Additional link 1' },
+        { href: '/', text: 'Additional link 2' },
+        { href: '/', text: 'Additional link 3' },
+      ],
+    },
+    {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
+      callToAction: { href: '/', text: 'Read more' },
+      links: [
+        { href: '/', text: 'Additional link 1' },
+        { href: '/', text: 'Additional link 2' },
+        { href: '/', text: 'Additional link 3' },
+      ],
+    },
+  ]}
+/>
+
+<!-- Custom -->
+<Features1
+  title="Lorem Ipsum"
+  subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  columns={3}
+  items={[
+    {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      callToAction: { href: '/', text: 'Read more' },
+    },
+    {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      callToAction: { href: '/', text: 'Read more' },
+    },
+    {
+      title: 'Lorem Ipsum',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      callToAction: { href: '/', text: 'Read more' },
+    },
+  ]}
+/>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop | Type | Default |
+    |-----------|------------|------------|
+    | columns | number | '' |
+    | items | IItem[] | [] |
+    | title | string | '' |
+    | subtitle | string | '' |
+    | tagline | string | '' |
+    | id | string | '' |
+    | isDark | boolean | '' |
+    | bg | string | '' |
+    | classes.container | string | '' |
+    | classes.headline.container | string | '' |
+    | classes.headline.title | string | '' |
+    | classes.headline.subtitle | string | '' |
+    | classes.headline.tagline | string | '' |
+  </div>
+</div>
+
+

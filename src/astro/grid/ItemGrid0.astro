@@ -1,0 +1,27 @@
+---
+import type { IItemGrid as Props } from 'yt-astro-ui/types';
+import { twMerge } from 'tailwind-merge';
+
+const { columns, classes = {} } = Astro.props
+
+const {
+  container: containerClass = '',
+} = classes
+---
+
+<div
+  class={twMerge(
+    `grid gap-6 ${
+      Number(columns) === 4
+        ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+        : Number(columns) === 3
+          ? 'lg:grid-cols-3 sm:grid-cols-2'
+          : Number(columns) === 2
+            ? 'sm:grid-cols-2 '
+            : ''
+    }`,
+    containerClass,
+  )}
+>
+  <slot />
+</div>

@@ -8,6 +8,14 @@ export { default as Headline } from './src/astro/headline/Headline.astro';
 export { default as Image } from './src/astro/image/Image.astro';
 
 export { default as Layout } from './src/astro/layouts/Layout.astro';
+export { default as BackToTopButton } from './src/astro/BackToTopButton.astro';
+
+export { default as Item } from './src/astro/grid/Item.astro';
+export { default as ItemGrid0 } from './src/astro/grid/ItemGrid0.astro';
+export { default as Features0 } from './src/astro/grid/Features0.astro';
+export { default as Features1 } from './src/astro/grid/Features1.astro';
+
+export { default as WidgetWrapper } from './src/astro/container/WidgetWrapper.astro';
 
 /* Carousels */
 export { default as HeroSlider } from './src/astro/carousel/hero-slider/HeroSlider.astro';

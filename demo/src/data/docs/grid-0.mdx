@@ -1,0 +1,46 @@
+---
+title: Item Grid 0
+category: UI
+---
+import Demo from '~/components/Demo.astro';
+import { ItemGrid0 } from 'yt-astro-ui';
+
+# Item Grid 0
+
+## Usage
+
+<div className="space-y-12">
+  <Demo title="Default">
+    <ItemGrid0 columns={4} classes={{ container: 'p-6' }}>
+      {Array.from({ length: 12 }, (_, i) => i).map(i => (
+        <div className="flex items-center justify-center py-12 rounded bg-slate-100 dark:bg-zinc-800">{i + 1}</div>
+      ))}
+    </ItemGrid0>
+  </Demo>
+</div>
+
+
+```astro
+---
+import { ItemGrid0 } from 'yt-astro-ui';
+---
+
+<ItemGrid0 columns={4} classes={{container: 'p-6'}}>
+  {Array.from({ length: 12 }, (_, i) => i).map(i => (
+    <div>{i+1}</div>
+  ))}
+</ItemGrid0>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop | Type | Default |
+    |-----------|------------|------------|
+    | classes.container | string | '' |
+    | columns | number | 1 |
+  </div>
+</div>
+
+

@@ -1,0 +1,115 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import Image from 'yt-astro-ui/astro/image/Image.astro'
+import { Button } from "yt-astro-ui/svelte/button/index.js";
+import type { IItem as Props } from 'yt-astro-ui/types'
+
+const {
+  title = await Astro.slots.render('title'),
+  after = await Astro.slots.render('after'),
+  description,
+  icon,
+  image,
+  data = [],
+  callToAction,
+  classes = {},
+} = Astro.props;
+
+const {
+  container: containerClass = '',
+  icon: iconClass = '',
+  image: imageClass = '',
+  imageContainer: imageContainerClass = '',
+  title: titleClass = '',
+  description: descriptionClass = 'text-muted-foreground',
+  action: actionClass = '',
+} = classes;
+---
+<div class={twMerge('relative flex flex-col justify-stretch overflow-hidden rounded-lg border backdrop-blur bg-card', containerClass, !image ? 'p-6' : 'pb-6')}>
+  
+  <!-- Image -->
+  {image && (
+    <div class={twMerge('w-full overflow-hidden h-60 bg-gray-400 dark:bg-slate-700', imageContainerClass)}>
+
+      <slot name="badge" />
+        
+      {(callToAction && callToAction.href) ? (
+        <a href={callToAction.href} class="group">
+          <Image
+            src={image?.src || String(image)}
+            class={twMerge('w-full md:h-full  group-hover:scale-105 transition duration-300', imageClass)}
+            widths={[400, 900]}
+            width={400}
+            height={400}
+            sizes="(max-width: 900px) 400px, 900px"
+            alt={image?.alt || title}
+            aspectRatio={image?.aspectRatio || '4:3'}
+            layout="cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      ) : (
+        <Image
+          src={image?.src || String(image)}
+          class={twMerge('w-full md:h-full  group-hover:scale-105 transition duration-300', imageClass)}
+          widths={[400, 900]}
+          width={400}
+          height={400}
+          sizes="(max-width: 900px) 400px, 900px"
+          alt={image?.alt || title}
+          aspectRatio={image?.aspectRatio || '4:3'}
+          layout="cover"
+          loading="lazy"
+          decoding="async"
+        />
+      )}
+    </div>
+  )}
+
+  <!-- Icon -->
+  {icon && (
+    <Icon name={icon} class={twMerge('w-12 h-12 text-primary', image ? 'ml-6' : '', iconClass)} />
+  )}
+  
+  <!-- Title & Description -->
+  <div class={twMerge('py-6', image ? 'px-6' : '')}>
+    <div class={twMerge('text-xl font-bold', titleClass)}>
+      {title}
+    </div>
+    {description && (
+      <p
+        class={twMerge('mt-2', descriptionClass)}
+        set:html={description}
+      />
+    )}
+    <slot name="description" />
+  </div>
+
+  <!-- Data list -->
+  {(data && data.length > 0) && (
+    <div class="text-sm">
+      {data.map((item) => (
+        <div class="flex items-center justify-between py-2 px-6 odd:bg-white even:bg-slate-50 dark:odd:bg-transparent dark:even:bg-zinc-800">
+          <div class="text-muted-foreground">{item.name}</div>
+          <div>{item.value}</div>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {(callToAction || after) && (
+    <div class={twMerge('w-full mt-auto', image ? 'px-6' : '')}>
+      <slot name="after" />
+
+      <!-- Action Button -->
+      {callToAction && (
+        <div class={twMerge('', actionClass)}>
+          <Button {...callToAction} />
+        </div>
+      )}
+    </div>
+  )}
+  
+</div>

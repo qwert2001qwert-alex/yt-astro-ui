@@ -1,0 +1,111 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<style>
+  .btn-scroll-top {
+    --yt-btn-scroll-top-size: 2.5rem;
+
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--yt-btn-scroll-top-size);
+    height: var(--yt-btn-scroll-top-size);
+    font-size: 1.25rem;
+    text-decoration: none;
+    box-shadow: 0 0.275rem 1.125rem rgba(18, 21, 25, 0.1);
+    opacity: 0;
+    transition: transform 0.25s ease-in-out, opacity 0.25s;
+    transform: scale(0);
+    border-radius: 50%;
+  }
+
+  .btn-scroll-top::before {
+    position: absolute;
+    top: 0.0625rem;
+    left: 0.0625rem;
+    width: calc(var(--yt-btn-scroll-top-size) - 0.125rem);
+    height: calc(var(--yt-btn-scroll-top-size) - 0.125rem);
+    border-radius: 50%;
+    z-index: -1;
+    content: '';
+    background-color: var(--color-card);
+  }
+
+  .btn-scroll-top > svg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(90deg);
+  }
+
+  .btn-scroll-top.show {
+    transform: scale(1);
+    opacity: 1;
+  }
+</style>
+
+<!-- Back to top button-->
+<a class="btn-scroll-top text-card-foreground" href="#top" data-scroll>
+  <svg viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></circle>
+  </svg>
+  <span class="flex items-center justify-center">
+    <Icon name="tabler:arrow-up" />
+  </span>
+</a>
+
+<script>
+  /**
+   * Animate scroll to top button in/off view
+   */
+  const scrollTopButton = function () {
+    const button = document.querySelector('.btn-scroll-top');
+    const scrollOffset = '450';
+    
+    if (button == null) return;
+    
+    const offsetFromTop = parseInt(scrollOffset, 10);
+    const progress = button.querySelector('svg circle') as SVGCircleElement;
+
+    if (progress == null) return;
+
+    let length = 0;
+    if (document.documentElement.clientWidth > 100) {
+      length = progress?.getTotalLength() || 0;
+    }
+
+    progress.style.strokeDasharray = `${length}`;
+    progress.style.strokeDashoffset = `${length}`;
+
+    const showProgress = function showProgress() {
+      const scrollPercent =
+        (document.body.scrollTop + document.documentElement.scrollTop) /
+        (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+      const draw = length * scrollPercent;
+      progress.style.strokeDashoffset = String(length - draw);
+    };
+
+    window.addEventListener('scroll', function (e) {
+      //if (e?.currentTarget?.pageYOffset > offsetFromTop) {
+      if (window.scrollY > offsetFromTop) {
+        button.classList.add('show');
+      } else {
+        button.classList.remove('show');
+      }
+
+      showProgress();
+    });
+  }
+
+  scrollTopButton();
+
+  document.addEventListener('astro:after-swap', () => {
+    scrollTopButton();
+  });
+</script>

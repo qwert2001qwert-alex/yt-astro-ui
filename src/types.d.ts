@@ -1,9 +1,73 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
+import { BackToTopButton, ItemGrid0 } from '../index'
 
 export interface Taxonomy {
   slug: string;
   title: string;
+}
+
+export interface INameValue {
+  name?: string;
+  value?: string;
+}
+
+export interface IWidget {
+  id?: string;
+  isDark?: boolean;
+  bg?: string;
+  classes?: Record<string, string | Record<string, string>>;
+}
+
+export interface IImage {
+  src: string;
+  alt?: string;
+  aspectRatio?: string;
+}
+
+export interface ILink {
+  href?: string;
+  text?: string;
+}
+
+export interface IItem {
+  title?: string;
+  description?: string;
+  icon?: string;
+  classes?: Record<string, string>;
+  callToAction?: ICallToAction;
+  image?: IImage;
+  data?: INameValue[];
+  links?: ILink[];
+  badge?: any;
+  after?: any;
+}
+
+export interface IItemGrid {
+  items?: Array<Item>;
+  columns?: number;
+  defaultIcon?: string;
+  classes?: Record<string, string>;
+}
+
+export interface IHeadline {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  classes?: Record<string, string>;
+}
+
+export interface IFeatures extends Omit<IHeadline, 'classes'>, IWidget {
+  image?: string | unknown;
+  video?: Video;
+  items?: IItem[];
+  columns?: number;
+  defaultIcon?: string;
+  callToAction1?: ICallToAction;
+  callToAction2?: ICallToAction;
+  isReversed?: boolean;
+  isBeforeContent?: boolean;
+  isAfterContent?: boolean;
 }
 
 export interface MetaData {
@@ -58,7 +122,7 @@ export interface Widget {
 }
 
 // COMPONENTS
-export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
+export interface ICallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'icon';
   text?: string;
   icon?: string;
@@ -66,12 +130,69 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   type?: 'button' | 'submit' | 'reset';
 }
 
-/*export interface Headline {
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  classes?: Record<string, string>;
-}*/
+
+/**
+ * ItemGrid0
+ *
+ * @param _props - Record<string, any>
+ * @param _props.columns
+ * @param _props.classes.container - Optional. Additional CSS class names
+ */
+type ItemGrid0 = typeof import('../index.js').ItemGrid0
+export const ItemGrid0: ItemGrid0;
+
+
+/**
+ * Item
+ *
+ * @param _props - Record<string, any>
+ * @param _props.columns
+ */
+type Item = typeof import('../index.js').Item
+export const Item: Item;
+
+
+/**
+ * Features0
+ *
+ * @param _props - Record<string, any>
+ * @param _props.title
+ * @param _props.subtitle
+ * @param _props.tagline
+ * @param _props.id
+ * @param _props.isDark
+ * @param _props.classes - Record<string, string>
+ * @param _props.bg
+ */
+type Features0 = typeof import('../index.js').Features0
+export const Features0: Features0;
+
+
+/**
+ * Features1
+ *
+ * @param _props - Record<string, any>
+ * @param _props.title
+ * @param _props.subtitle
+ * @param _props.tagline
+ * @param _props.id
+ * @param _props.isDark
+ * @param _props.classes - Record<string, string>
+ * @param _props.bg
+ */
+type Features1 = typeof import('../index.js').Features1
+export const Features1: Features1;
+
+
+/**
+ * WidgetWrapper
+ *
+ * @param _props - Record<string, any>
+ * @param _props.
+ */
+type WidgetWrapper = typeof import('../index.js').WidgetWrapper
+export const WidgetWrapper: WidgetWrapper;
+
 
 /**
  * Layout
@@ -81,6 +202,16 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
  */
 type Layout = typeof import('../index.js').Layout
 export const Layout: Layout;
+
+
+/**
+ * BackToTopButton
+ *
+ * @param _props - Record<string, any>
+ * @param _props.metadata
+ */
+type BackToTopButton = typeof import('../index.js').BackToTopButton
+export const BackToTopButton: BackToTopButton;
 
 
 /**
