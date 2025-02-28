@@ -1,0 +1,33 @@
+---
+import { twMerge } from 'tailwind-merge'
+import type { ICard as Props } from 'yt-astro-ui/types'
+
+const {
+  as = 'article',
+  classes = {}
+} = Astro.props
+
+const WrapperTag = as
+
+const {
+  container: containerClass = 'rounded-lg border border-input bg-card text-card-foreground py-6',
+  image: imageClass = '-mt-6 h-60 bg-gray-400 dark:bg-zinc-700',
+  content: contentClass = '',
+  badge: badgeClass = '',
+} = classes
+---
+<WrapperTag
+  class={twMerge('relative flex flex-col justify-between gap-6 overflow-hidden group', containerClass)}
+>
+  <div class={twMerge('absolute', badgeClass)}>
+    <slot name="badge" />
+  </div>
+  
+  <div class={twMerge('w-full overflow-hidden', imageClass)}>
+    <slot name="image" />
+  </div>
+  
+  <div class={contentClass}>
+    <slot name="content" />
+  </div>
+</WrapperTag>

@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes, HTMLTag } from 'astro/types'
 
 export interface Taxonomy {
   slug: string;
@@ -28,17 +28,11 @@ export interface ILink {
   text?: string;
 }
 
-export interface IItem {
-  title?: string;
-  description?: string;
-  icon?: string;
+export interface ICard {
+  image?: IImage | string;
+  content?: string;
+  as?: HTMLTag;
   classes?: Record<string, string>;
-  callToAction?: ICallToAction;
-  image?: IImage;
-  data?: INameValue[];
-  links?: ILink[];
-  badge?: any;
-  after?: any;
 }
 
 export interface IItemGrid {
@@ -53,19 +47,6 @@ export interface IHeadline {
   subtitle?: string;
   tagline?: string;
   classes?: Record<string, string>;
-}
-
-export interface IFeatures extends Omit<IHeadline, 'classes'>, IWidget {
-  image?: string | unknown;
-  video?: Video;
-  items?: IItem[];
-  columns?: number;
-  defaultIcon?: string;
-  callToAction1?: ICallToAction;
-  callToAction2?: ICallToAction;
-  isReversed?: boolean;
-  isBeforeContent?: boolean;
-  isAfterContent?: boolean;
 }
 
 export interface MetaData {
@@ -112,12 +93,6 @@ export interface Video {
   type?: string;
 }
 
-export interface Widget {
-  id?: string;
-  isDark?: boolean;
-  bg?: string;
-  classes?: Record<string, string | Record<string, string>>;
-}
 
 // COMPONENTS
 export interface ICallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
@@ -127,6 +102,37 @@ export interface ICallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   classes?: Record<string, string>;
   type?: 'button' | 'submit' | 'reset';
 }
+
+
+/**
+ * Card0
+ *
+ * @param _props - Record<string, any>
+ * @param _props.columns
+ * @param _props.classes.container - Optional. Additional CSS class names
+ */
+type Card0 = typeof import('../index.js').Card0
+export const Card0: Card0;
+
+/**
+ * Card1
+ *
+ * @param _props - Record<string, any>
+ * @param _props.columns
+ * @param _props.classes.container - Optional. Additional CSS class names
+ */
+type Card1 = typeof import('../index.js').Card1
+export const Card1: Card1;
+
+/**
+ * Card2
+ *
+ * @param _props - Record<string, any>
+ * @param _props.columns
+ * @param _props.classes.container - Optional. Additional CSS class names
+ */
+type Card2 = typeof import('../index.js').Card2
+export const Card2: Card2;
 
 
 /**

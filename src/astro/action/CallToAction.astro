@@ -1,15 +1,15 @@
 ---
 import WidgetWrapper from 'yt-astro-ui/astro/container/WidgetWrapper.astro';
-import type { CallToAction, Widget } from 'yt-astro-ui/types';
+import type { ICallToAction, IWidget } from 'yt-astro-ui/types';
 import { Button } from "yt-astro-ui/svelte/button/index.js";
 import Headline from 'yt-astro-ui/astro/headline/Headline.astro';
 
-interface Props extends Widget {
+interface Props extends IWidget {
   title?: string;
   subtitle?: string;
   tagline?: string;
-  callToAction?: CallToAction;
-  actions?: string | CallToAction[];
+  callToAction?: ICallToAction;
+  actions?: string | ICallToAction[];
 }
 
 const {

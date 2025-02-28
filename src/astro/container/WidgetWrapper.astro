@@ -1,10 +1,10 @@
 ---
 import type { HTMLTag } from 'astro/types';
 import { twMerge } from 'tailwind-merge';
-import type { Widget } from 'yt-astro-ui/types';
+import type { IWidget } from 'yt-astro-ui/types';
 import Background from './Background.astro';
 
-export interface Props extends Widget {
+export interface Props extends IWidget {
   containerClass?: string;
   ['as']?: HTMLTag;
 }

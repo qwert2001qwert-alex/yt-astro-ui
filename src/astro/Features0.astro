@@ -1,7 +1,15 @@
 ---
 import WidgetWrapper from 'yt-astro-ui/astro/container/WidgetWrapper.astro'
 import Headline from 'yt-astro-ui/astro/headline/Headline.astro'
-import type { IFeatures as Props } from 'yt-astro-ui/types'
+import type { Props as ICard1 } from 'yt-astro-ui/astro/card/Card1.astro'
+import type { IWidget, IHeadline } from 'yt-astro-ui/types'
+
+export interface Props extends Omit<IHeadline, 'classes'>, IWidget {
+  items?: ICard1[];
+  columns?: number;
+  isBeforeContent?: boolean;
+  isAfterContent?: boolean;
+}
 
 const {
   title = await Astro.slots.render('title'),

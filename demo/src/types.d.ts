@@ -88,21 +88,8 @@ export interface Image {
   alt?: string;
 }
 
-export interface Video {
+export interface IVideo {
   src: string;
   type?: string;
 }
 
-export interface Widget {
-  id?: string;
-  isDark?: boolean;
-  bg?: string;
-  classes?: Record<string, string | Record<string, string>>;
-}
-
-export interface Headline {
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  classes?: Record<string, string>;
-}

@@ -1,0 +1,80 @@
+---
+title: Card 2
+category: Widget
+---
+
+import Demo from '~/components/Demo.astro';
+import { Card2, ItemGrid0 } from 'yt-astro-ui';
+
+# Card 2
+
+The Card component provides a versatile container for displaying related content. It uses semantic HTML and ensures proper heading structure and content organization.
+
+## Usage
+
+<div className="space-y-12">
+  <Demo title="">
+    <ItemGrid0 columns={3}>
+      <Card2
+        title="Card 2.1"
+        description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+        image='~/assets/images/local_placeholder.jpeg'
+        url="/"
+      />
+      <Card2
+        title="Card 2.2"
+        description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+        icon='tabler:home'
+        url="/"
+      />
+      <Card2
+        title="Card 2.3"
+        description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+      />
+    </ItemGrid0>
+  </Demo>
+</div>
+
+
+## Usage
+
+```astro
+---
+import { Card1, ItemGrid0 } from 'yt-astro-ui';
+---
+
+<ItemGrid0 columns={3}>
+  <Card2
+    title="Card 2.1"
+    description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+    image='~/assets/images/local_placeholder.jpeg'
+    url="/"
+  />
+  <Card2
+    title="Card 2.2"
+    description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+    icon='tabler:home'
+    url="/"
+  />
+  <Card2
+    title="Card 2.3"
+    description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+  />
+</ItemGrid0>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop | Type | Default | Description |
+    |------|------|---------|-------------|
+    | `title` | `string` | - | Title text for the card |
+    | `description` | `string` | - | Content for the card |
+    | `image`     | `string` \| `{{src: string, alt: string}}` | - | Path to the card's image |
+    | `icon`      | `string` | - | Name icon from set |
+    | `class`     | `string` | - | Additional CSS classes to apply to the card |
+    | `asHeader`  | `string` | `h3` | HTML tag name for the title |
+    | `url`       | `string` | - | URL for the card’s link wrapper |
+  </div>
+</div>

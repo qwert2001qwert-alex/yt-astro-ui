@@ -1,0 +1,100 @@
+---
+import { Icon } from 'astro-icon/components'
+import { twMerge } from 'tailwind-merge'
+import Image from 'yt-astro-ui/astro/image/Image.astro'
+import Card0 from 'yt-astro-ui/astro/card/Card0.astro'
+import type { HTMLTag } from 'astro/types'
+import type { ICallToAction, ICard, ILink, INameValue } from 'yt-astro-ui/types'
+
+export interface Props extends ICard {
+  title?: string;
+  description?: string;
+  icon?: string;
+  asHeader?: HTMLTag;
+  badge?: any;
+  url?: string;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  description,
+  icon,
+  image,
+  url = '/',
+  classes = {},
+  as = 'article',
+  asHeader = 'h3',
+} = Astro.props
+
+const WrapperHeaderTag = asHeader
+
+const {
+  title: titleClass = '',
+  description: descriptionClass = 'text-muted-foreground',
+  icon: iconClass = '',
+  image: imageClass = '',
+} = classes
+
+const img = {
+  src: typeof image === 'string' ? image : image?.src,
+  alt: typeof image === 'string' ? title : image?.alt,
+  aspectRatio: typeof image === 'string' ? '4:3' : image?.aspectRatio || '4:3',
+}
+---
+
+<Card0
+  as={as}
+  classes={{
+    image: image ? '-mt-6 h-60 bg-gray-400 dark:bg-zinc-700' : '',
+    content: 'space-y-6',
+  }}
+>
+  <!-- Image -->
+  <Fragment slot="image">
+    {image && (
+      <Image
+        src={img.src || String(image)}
+        class={twMerge('w-full md:h-full group-hover:scale-105 transition duration-300', imageClass)}
+        widths={[400, 900]}
+        width={400}
+        height={400}
+        sizes="(max-width: 900px) 400px, 900px"
+        alt={img.alt || title}
+        aspectRatio={img.aspectRatio}
+        layout="cover"
+        loading="lazy"
+        decoding="async"
+      />
+    )}
+
+    <!-- Icon -->
+    {icon && (
+      <div class="h-12 px-6">
+        <Icon name={icon}
+              class={twMerge('w-12 h-12 text-primary group-hover:scale-105 transition duration-300', image ? 'mt-6' : '', iconClass)} />
+      </div>
+    )}
+  </Fragment>
+
+  <!-- Content -->
+  <Fragment slot="content">
+    <div class={twMerge('px-6 space-y-6')}>
+      <div>
+        <WrapperHeaderTag class={twMerge('text-xl font-bold', titleClass)}>
+          {url ?
+            <a href={url} class="after:content-[''] after:inset-0 after:absolute">
+              {title}
+            </a>
+            : title
+          }
+        </WrapperHeaderTag>
+
+        <div class={twMerge('mt-2', descriptionClass)}>
+          <slot />
+          {description}
+        </div>
+      </div>
+    </div>
+  </Fragment>
+
+</Card0>
