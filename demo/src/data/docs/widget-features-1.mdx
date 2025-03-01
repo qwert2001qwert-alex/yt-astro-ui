@@ -3,7 +3,11 @@ title: Features 1
 category: Widget
 ---
 import Demo from '~/components/Demo.astro';
-import { Features1 } from 'yt-astro-ui';
+import { Features1Widget } from 'yt-astro-ui';
+import INameValue from '../types/INameValue.md';
+import ILink from '../types/ILink.md';
+import ICallToAction from '../types/ICallToAction.md';
+
 
 # Features 1
 
@@ -11,7 +15,7 @@ import { Features1 } from 'yt-astro-ui';
 
 <div className="space-y-12">
   <Demo title="Full of content">
-    <Features1
+    <Features1Widget
       title="Lorem Ipsum"
       subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       tagline="Features"
@@ -53,43 +57,15 @@ import { Features1 } from 'yt-astro-ui';
       ]}
     />
   </Demo>
-
-  <Demo title="Custom">
-    <Features1
-      title="Lorem Ipsum"
-      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      columns={3}
-      items={[
-        {
-          icon: 'tabler:home',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          callToAction: { href: '/', text: 'Read more' },
-        },
-        {
-          icon: 'tabler:tractor',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          callToAction: { href: '/', text: 'Read more' },
-        },
-        {
-          icon: 'tabler:circle-chevrons-down',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        },
-      ]}
-    />
-  </Demo>
 </div>
 
 
 ```astro
 ---
-import { Features1 } from 'yt-astro-ui';
+import { Features1Widget } from 'yt-astro-ui';
 ---
 
-<!-- Full of content -->
-<Features1
+<Features1Widget
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   tagline="Features"
@@ -130,9 +106,76 @@ import { Features1 } from 'yt-astro-ui';
     },
   ]}
 />
+```
 
-<!-- Custom -->
-<Features1
+
+
+<div className="space-y-12">
+  <Demo title="With icon">
+    <Features1Widget
+      title="Lorem Ipsum"
+      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+      columns={3}
+      items={[
+        {
+          icon: 'tabler:home',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          callToAction: { href: '/', text: 'Read more' },
+        },
+        {
+          icon: 'tabler:tractor',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          callToAction: { href: '/', text: 'Read more' },
+        },
+        {
+          icon: 'tabler:circle-chevrons-down',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        },
+      ]}
+    />
+  </Demo>
+
+  <Demo title="With background">
+    <Features1Widget
+      title="Lorem Ipsum"
+      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+      columns={3}
+      items={[
+        {
+          icon: 'tabler:home',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          callToAction: { href: '/', text: 'Read more' },
+        },
+        {
+          icon: 'tabler:tractor',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+          callToAction: { href: '/', text: 'Read more' },
+        },
+        {
+          icon: 'tabler:circle-chevrons-down',
+          title: 'Lorem Ipsum',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        },
+      ]}
+    >
+      <Fragment slot="bg">
+        <div className="absolute inset-0 bg-primary/20"></div>
+      </Fragment>
+    </Features1Widget>
+  </Demo>
+</div>
+
+```astro
+---
+import { Features1Widget } from 'yt-astro-ui';
+---
+
+<Features1Widget
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   columns={3}
@@ -154,28 +197,83 @@ import { Features1 } from 'yt-astro-ui';
     },
   ]}
 />
+
+<!-- With background -->
+<Features1Widget
+  title="Lorem Ipsum"
+  subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  columns={3}
+  items={[...]}
+>
+  <Fragment slot="bg">
+    <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800 "></div>
+  </Fragment>
+</Features1Widget>
 ```
 
 ## Props
 
+### Features1Widget
+
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop | Type | Default |
-    |-----------|------------|------------|
-    | columns | number | '' |
-    | items | IItem[] | [] |
-    | title | string | '' |
-    | subtitle | string | '' |
-    | tagline | string | '' |
-    | id | string | '' |
-    | isDark | boolean | '' |
-    | bg | string | '' |
-    | classes.container | string | '' |
-    | classes.headline.container | string | '' |
-    | classes.headline.title | string | '' |
-    | classes.headline.subtitle | string | '' |
-    | classes.headline.tagline | string | '' |
+    | Prop | Type | Default | Description |
+    |-----------|------------|------------|------------|
+    | `columns` | `number` | `1` | Number of columns in the grid. From 1 to 4 |
+    | `items` | `IItem[]` | `[]` | |
+    | `title` | `string` | - | |
+    | `subtitle` | `string` | - | |
+    | `tagline` | `string` | - | |
+    | `id` | `string` | - | |
+    | `isDark` | `boolean` | `false` | |
+    | `bg` | `string` | - | |
+    | `classes.container` | `string` | - | |
+    | `classes.headline.container` | `string` | - | |
+    | `classes.headline.title` | `string` | - | |
+    | `classes.headline.subtitle` | `string` | - | |
+    | `classes.headline.tagline` | `string` | - | |
+  </div>
+</div>
+
+### IItem
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    | Prop | Type | Default | Description |
+    |-----------|------------|------------|------------|
+    | `as` | `string` | `article` | HTML tag name for the wrapper |
+    | `asHeader` | `string` | `h3` | HTML tag name for the title |
+    | `title` | `string` | - | |
+    | `description` | `string` | - | |
+    | `icon` | `string` | - | |
+    | `callToAction` | `ICallToAction` | - | |
+    | `data` | `INameValue[]` | - | |
+    | `links` | `ILink[]` | - | |
+    | `badge` | `string` | - | |
   </div>
 </div>
 
 
+### INameValue
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    <INameValue />
+  </div>
+</div>
+
+### ILink
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    <ILink />
+  </div>
+</div>
+
+### ICallToAction
+
+<div className="overflow-x-auto">
+  <div className="min-w-xl">
+    <ICallToAction />
+  </div>
+</div>

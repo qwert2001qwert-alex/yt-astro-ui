@@ -157,7 +157,7 @@ export const Item: Item;
 
 
 /**
- * Features0
+ * Features0Widget
  *
  * @param _props - Record<string, any>
  * @param _props.title
@@ -168,12 +168,12 @@ export const Item: Item;
  * @param _props.classes - Record<string, string>
  * @param _props.bg
  */
-type Features0 = typeof import('../index.js').Features0
-export const Features0: Features0;
+type Features0Widget = typeof import('../index.js').Features0Widget
+export const Features0Widget: Features0Widget;
 
 
 /**
- * Features1
+ * Features1Widget
  *
  * @param _props - Record<string, any>
  * @param _props.title
@@ -184,8 +184,8 @@ export const Features0: Features0;
  * @param _props.classes - Record<string, string>
  * @param _props.bg
  */
-type Features1 = typeof import('../index.js').Features1
-export const Features1: Features1;
+type Features1Widget = typeof import('../index.js').Features1Widget
+export const Features1Widget: Features1Widget;
 
 
 /**
@@ -268,7 +268,7 @@ export const Headline: Headline;
 
 
 /**
- * HeroSlider
+ * HeroSliderWidget
  *
  * @param _props - Record<string, any>
  * @param _props.label - Optional label
@@ -276,8 +276,8 @@ export const Headline: Headline;
  * @param _props.iconName - Optional. Change icon
  * @param _props.class - Optional CSS class names
  */
-type HeroSlider = typeof import('../index.js').HeroSlider
-export const HeroSlider: HeroSlider;
+type HeroSliderWidget = typeof import('../index.js').HeroSliderWidget
+export const HeroSliderWidget: HeroSliderWidget;
 
 /**
  * HeroSlide

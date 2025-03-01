@@ -20,7 +20,7 @@
   --yt-color-card-foreground: hsl(0 0% 3.9%);
   --yt-color-popover: hsl(0 2% 21%);
   --yt-color-popover-foreground: hsl(0 0% 100%);
-  --yt-color-primary: rgb(192 38 211);
+  --yt-color-primary: rgb(135 44 235);
   --yt-color-primary-foreground: hsl(0 0% 100%);
   --yt-color-secondary: hsl(240 4.8% 95.9%);
   --yt-color-secondary-foreground: hsl(240 5.9% 10%);
@@ -109,4 +109,8 @@
 
 @theme {
   --radius-btn: 9999px;
+}
+
+@utility bg-stripe {
+  @apply text-black/10 dark:text-white/12.5 bg-[size:8px_8px] bg-left-top bg-[image:repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)]
 }

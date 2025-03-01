@@ -1,6 +1,6 @@
 {
   "name": "yt-astro-ui",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A component library built for Astro and Svelte",
   "homepage": "https://astro-ui.dev.yatoday.es",
   "bugs": "https://github.com/qwert2001qwert-alex/yt-astro-ui/issues",

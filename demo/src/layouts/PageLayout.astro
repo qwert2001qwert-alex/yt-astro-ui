@@ -29,10 +29,10 @@ const { metadata, title = "Default" } = Astro.props;
 <Layout metadata={metadata}>
   <Favicons slot="favicons" />
   
-  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-background text-foreground" aria-label="Sidebar">
     <div class="h-full flex flex-col justify-between px-3 py-4">
       <div class="flex-1 overflow-y-auto">
-        <a href="/" class="flex items-end gap-4 mb-4 py-2 text-2xl text-primary font-bold">
+        <a href="/" class="flex items-center gap-4 mb-4 py-2 text-2xl text-primary font-bold">
           { Astro.url.pathname !== '/' && <Icon name="tabler:arrow-left" class="size-6" /> }
           Astro UI
         </a>
@@ -63,13 +63,19 @@ const { metadata, title = "Default" } = Astro.props;
     </div>
   </aside>
   <div class="sm:ml-64 flex flex-col">
-    <div class="flex items-center justify-between px-6">
-      <div class="py-4 text-2xl font-medium">
-        { title }
+    <div class="flex items-center justify-between px-2 sm:px-6">
+      <div class="flex items-center">
+        <button type="button" class="sm:hidden" aria-label="Open sidebar" onclick="document.getElementById('default-sidebar').classList.toggle('translate-x-0');">
+          <Icon name="tabler:menu-2" class="size-6" />
+        </button>
+        <div class="py-4 text-2xl font-medium hidden sm:block">
+          { title }
+        </div>
       </div>
       
+      
       <div class="flex items-center gap-4">
-        <span>{dependencies['yt-astro-ui'].replace("^", 'v: ') || '0.0.1'}</span>
+        <span class="text-xs sm:text-base">{dependencies['yt-astro-ui'].replace("^", 'v: ') || '0.0.1'}</span>
         <DarkMode />
       </div>
       

@@ -1,0 +1,9 @@
+| Prop        | Type                                                                                  | Default | Description                                                                                 |
+|-------------|---------------------------------------------------------------------------------------|--------|---------------------------------------------------------------------------------------------|
+| `variant`   | `default` \| `primary` \| `accent` \| `destructive` \| `outline` \| `ghost` \| `link` | `default` | One of the predefined design options. See the [button component](/docs/button) for details. |
+| `text`      | `string`                                                                              | -      | Text on a button or link                                                                    |
+| `icon`      | `string`                                                                              | -      | Icon name on a button or link                                                               |
+| `class`     | `string`                                                                              | -      | Additional CSS classes for a button or link                                                 |
+| `type`      | `button` \| `submit` \| `reset`                                                       | -      | The type of button if the `href` attribute is not used                                        |
+| `{...rest}` | `HTMLAttributes<'a'>`                                                                 | -      | Other attributes of the `a` tag                                                               |
+

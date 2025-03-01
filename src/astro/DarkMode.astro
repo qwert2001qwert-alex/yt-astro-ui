@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { twMerge } from 'tailwind-merge'
 
 export interface Props {
   label?: string;
@@ -11,7 +12,7 @@ export interface Props {
 
 const {
   label = 'Toggle between Dark and Light mode',
-  class: className = 'cursor-pointer dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center',
+  class: className = 'dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5',
   iconClass = 'w-6 h-6',
   iconName = 'tabler:sun',
   initialMode = 'system',
@@ -19,7 +20,7 @@ const {
 ---
 
 {!(initialMode.endsWith(':only')) && (
-  <button type="button" class={className} aria-label={label} data-aw-toggle-color-scheme>
+  <button type="button" class={twMerge('cursor-pointer inline-flex items-center', className)} aria-label={label} data-aw-toggle-color-scheme>
     <slot>
       <Icon name={iconName} class={iconClass} />
     </slot>

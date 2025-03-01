@@ -1,5 +1,6 @@
 ---
 import { twMerge } from 'tailwind-merge'
+import { DarkMode } from 'yt-astro-ui'
 export interface Props {
   title?: string;
   class?: string;
@@ -11,10 +12,17 @@ const {
 } = Astro.props
 ---
 
-<div class={twMerge("not-prose", className)}>
+<div class="not-prose">
   { title && <div class="text-2xl mb-4">{title}</div>}
-  <div class="inline px-2 py-1 text-sm bg-input text-input-foreground rounded-t-lg font-semibold">Viewport</div>
-  <div class="border-2 border-input border-dashed">
+  <div class="flex items-center justify-between px-4 py-2 bg-slate-300 dark:bg-zinc-700 rounded-t-lg">
+    <div class="flex items-center gap-2">
+      <div class="size-4 rounded-full bg-zinc-500"></div>
+      <div class="size-4 rounded-full bg-zinc-500"></div>
+      <div class="size-4 rounded-full bg-zinc-500"></div>
+    </div>
+    <DarkMode class="size-6 p-0 hover:text-black dark:hover:text-white" />
+  </div>
+  <div class={twMerge("border-2 border-slate-300 dark:border-zinc-700", className)}>
     <slot/>
   </div>
 </div>

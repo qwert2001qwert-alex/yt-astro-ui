@@ -3,7 +3,7 @@ title: Features 0
 category: Widget
 ---
 import Demo from '~/components/Demo.astro';
-import { Features0 } from 'yt-astro-ui';
+import { Features0Widget } from 'yt-astro-ui';
 
 # Features 0
 
@@ -13,24 +13,24 @@ WidgetWrapper + Headline
 
 <div className="space-y-12">
   <Demo title="Default">
-    <Features0
+    <Features0Widget
       title="Lorem Ipsum"
       subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       tagline="Features"
     >
       Content
-    </Features0>
+    </Features0Widget>
   </Demo>
   
   <Demo title="With custom classes">
-    <Features0
+    <Features0Widget
       title="Lorem Ipsum"
       subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       tagline="Features"
       classes={{container: 'text-center', headline: {container: 'text-left', title: '', subtitle: '', tagline: ''}}}
     >
       Content
-    </Features0>
+    </Features0Widget>
   </Demo>
 </div>
 
@@ -41,16 +41,16 @@ import { Features } from 'yt-astro-ui';
 ---
 
 <!-- Default -->
-<Features0
+<Features0Widget
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   tagline="Features"
 >
   Content
-</Features0>
+</Features0Widget>
 
 <!-- With custom classes -->
-<Features0
+<Features0Widget
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   tagline="Features"
@@ -65,25 +65,25 @@ import { Features } from 'yt-astro-ui';
   }}
 >
   Content
-</Features0>
+</Features0Widget>
 ```
 
 ## Props
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop | Type | Default |
-    |-----------|------------|------------|
-    | title | string | '' |
-    | subtitle | string | '' |
-    | tagline | string | '' |
-    | id | string | '' |
-    | isDark | boolean | '' |
-    | bg | string | '' |
-    | classes.container | string | '' |
-    | classes.headline.container | string | '' |
-    | classes.headline.title | string | '' |
-    | classes.headline.subtitle | string | '' |
-    | classes.headline.tagline | string | '' |
+    | Prop | Type | Default | Description |
+    |-----------|------------|------------|------------|
+    | `title` | `string` | - | |
+    | `subtitle` | `string` | - | |
+    | `tagline` | `string` | - | |
+    | `id` | `string` | - | |
+    | `isDark` | `boolean` | - | |
+    | `bg` | `string` | - | |
+    | `classes.container` | `string` | - | |
+    | `classes.headline.container` | `string` | - | |
+    | `classes.headline.title` | `string` | - | |
+    | `classes.headline.subtitle` | `string` | - | |
+    | `classes.headline.tagline` | `string` | - | |
   </div>
 </div>

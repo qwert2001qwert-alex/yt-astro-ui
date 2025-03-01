@@ -1,6 +1,6 @@
 ---
 title: Card 0
-category: Widget
+category: W.Feature
 ---
 
 import Demo from '~/components/Demo.astro';
@@ -14,14 +14,14 @@ The Card component provides a versatile container for displaying related content
 
 <div className="space-y-12">
   <Demo title="">
-    <ItemGrid0 columns={3}>
+    <ItemGrid0 columns={3} class="bg-stripe">
       <Card0>
         <div slot="image">Image Slot</div>
         <div slot="content">Content Slot</div>
       </Card0>
 
       <Card0
-        classes={{badge: 'right-4 top-4 border px-4'}}
+        classes={{badge: 'right-4 top-4 px-4  bg-stripe [&>div]:text-white'}}
       >
         <div slot="badge">Badge Slot</div>
         <div slot="image">Image Slot</div>
