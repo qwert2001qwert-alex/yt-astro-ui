@@ -5,7 +5,6 @@ category: W.Feature
 
 import Demo from '~/components/Demo.astro';
 import { Card1, ItemGrid0 } from 'yt-astro-ui';
-import IImage from '../types/IImage.md';
 import INameValue from '../types/INameValue.md';
 import ILink from '../types/ILink.md';
 import ICallToAction from '../types/ICallToAction.md';
@@ -14,7 +13,6 @@ import ICallToAction from '../types/ICallToAction.md';
 
 The Card component provides a versatile container for displaying related content. It uses semantic HTML and ensures proper heading structure and content organization.
 
-## Usage
 
 <div className="space-y-12">
   <Demo title="">
@@ -62,6 +60,7 @@ The Card component provides a versatile container for displaying related content
         description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
         image={{ src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' }}
         callToAction={{ href: '/', text: 'Read more' }}
+        classes={{image: 'h-40'}}
       />
 
       <Card1
@@ -69,6 +68,7 @@ The Card component provides a versatile container for displaying related content
         description='Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
         image={{ src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' }}
         icon="tabler:home"
+        classes={{image: 'h-40'}}
       />
 
       <Card1
@@ -153,7 +153,7 @@ import { Card1, ItemGrid0 } from 'yt-astro-ui';
     |------|------|---------|-------------|
     | `title` | `string` | - | Title text for the card |
     | `description` | `string` | - | Content for the card |
-    | `image`     | `string` \| `IImage[]` | - | Path to the card's image |
+    | `image`     | `string` \| [Image](/docs/image) | - | Path to the card's image |
     | `icon`      | `string` | - | Name icon from set |
     | `as`        | `string` | `article` | HTML tag name for the wrapper |
     | `asHeader`  | `string` | `h3` | HTML tag name for the title |
@@ -190,14 +190,5 @@ import { Card1, ItemGrid0 } from 'yt-astro-ui';
 <div className="overflow-x-auto">
   <div className="min-w-xl">
     <ICallToAction />
-  </div>
-</div>
-
-
-### IImage
-
-<div className="overflow-x-auto">
-  <div className="min-w-xl">
-    <IImage />
   </div>
 </div>

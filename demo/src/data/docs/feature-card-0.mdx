@@ -10,7 +10,6 @@ import { Card0, ItemGrid0 } from 'yt-astro-ui';
 
 The Card component provides a versatile container for displaying related content. It uses semantic HTML and ensures proper heading structure and content organization.
 
-## Usage
 
 <div className="space-y-12">
   <Demo title="">
@@ -27,12 +26,14 @@ The Card component provides a versatile container for displaying related content
         <div slot="image">Image Slot</div>
         <div slot="content">Content Slot</div>
       </Card0>
+      
+      <Card0 classes={{badge: 'right-4 top-4 px-4  bg-stripe [&>div]:text-white'}}>
+        <div>Content</div>
+      </Card0>
     </ItemGrid0>
   </Demo>
 </div>
 
-
-## Usage
 
 ```astro
 ---
@@ -45,9 +46,7 @@ import { Card0, ItemGrid0 } from 'yt-astro-ui';
     <div slot="content">Content Slot</div>
   </Card0>
 
-  <Card0
-    classes={{badge: 'right-4 top-4 border px-4'}}
-  >
+  <Card0classes={{badge: 'right-4 top-4 border px-4'}}>
     <div slot="badge">Badge Slot</div>
     <div slot="image">Image Slot</div>
     <div slot="content">Content Slot</div>

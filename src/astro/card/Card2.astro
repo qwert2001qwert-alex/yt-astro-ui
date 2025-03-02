@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 import Image from 'yt-astro-ui/astro/image/Image.astro'
 import Card0 from 'yt-astro-ui/astro/card/Card0.astro'
 import type { HTMLTag } from 'astro/types'
-import type { ICallToAction, ICard, ILink, INameValue } from 'yt-astro-ui/types'
+import type { ICard } from 'yt-astro-ui/types'
 
 export interface Props extends ICard {
   title?: string;
@@ -29,6 +29,7 @@ const {
 const WrapperHeaderTag = asHeader
 
 const {
+  container: containerClass = '',
   title: titleClass = '',
   description: descriptionClass = 'text-muted-foreground',
   icon: iconClass = '',
@@ -45,26 +46,28 @@ const img = {
 <Card0
   as={as}
   classes={{
-    image: image ? '-mt-6 h-60 bg-gray-400 dark:bg-zinc-700' : '',
     content: 'space-y-6',
+    container: containerClass
   }}
 >
   <!-- Image -->
   <Fragment slot="image">
     {image && (
-      <Image
-        src={img.src || String(image)}
-        class={twMerge('w-full md:h-full group-hover:scale-105 transition duration-300', imageClass)}
-        widths={[400, 900]}
-        width={400}
-        height={400}
-        sizes="(max-width: 900px) 400px, 900px"
-        alt={img.alt || title}
-        aspectRatio={img.aspectRatio}
-        layout="cover"
-        loading="lazy"
-        decoding="async"
-      />
+      <div class={twMerge("w-full overflow-hidden -mt-6 h-40 bg-gray-400 dark:bg-zinc-700", imageClass)}>
+        <Image
+          src={img.src || String(image)}
+          class={twMerge('w-full md:h-full group-hover:scale-105 transition duration-300', imageClass)}
+          widths={[400, 900]}
+          width={400}
+          height={400}
+          sizes="(max-width: 900px) 400px, 900px"
+          alt={img.alt || title}
+          aspectRatio={img.aspectRatio}
+          layout="cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
     )}
 
     <!-- Icon -->
@@ -77,24 +80,22 @@ const img = {
   </Fragment>
 
   <!-- Content -->
-  <Fragment slot="content">
-    <div class={twMerge('px-6 space-y-6')}>
-      <div>
-        <WrapperHeaderTag class={twMerge('text-xl font-bold', titleClass)}>
-          {url ?
-            <a href={url} class="after:content-[''] after:inset-0 after:absolute">
-              {title}
-            </a>
-            : title
-          }
-        </WrapperHeaderTag>
+  <div class={twMerge('px-6 space-y-6')}>
+    <div>
+      <WrapperHeaderTag class={twMerge('text-xl font-bold', titleClass)}>
+        {url ?
+          <a href={url} class="after:content-[''] after:inset-0 after:absolute">
+            {title}
+          </a>
+          : title
+        }
+      </WrapperHeaderTag>
 
-        <div class={twMerge('mt-2', descriptionClass)}>
-          <slot />
-          {description}
-        </div>
+      <div class={twMerge('mt-2', descriptionClass)}>
+        <slot />
+        {description}
       </div>
     </div>
-  </Fragment>
+  </div>
 
 </Card0>
