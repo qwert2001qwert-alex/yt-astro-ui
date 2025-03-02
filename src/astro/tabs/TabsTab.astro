@@ -1,29 +1,29 @@
 ---
 /**
-  * TabsTab Component
-  *
-  * @description A tab within a Tabs component
-  */
+ * TabsTab Component
+ *
+ * @description A tab within a Tabs component
+ */
 interface Props {
   /**
    * Unique identifier for the tab
    */
-  id: string
+  id: string;
   /**
    * ID of the panel this tab controls
    */
-  controls: string
+  controls: string;
   /**
    * Whether this tab is currently selected
    */
-  selected?: boolean
+  selected?: boolean;
   /**
    * Additional classes to apply to the tab
    */
-  class?: string
+  class?: string;
 }
 
-const { id, controls, selected = false, class: className } = Astro.props
+const { id, controls, selected = false, class: className } = Astro.props;
 ---
 
 <button

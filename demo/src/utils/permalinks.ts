@@ -26,11 +26,11 @@ export const POST_PERMALINK_PATTERN = trimSlash(`${BLOG_BASE}/%slug%`);
 
 /** */
 export const getCanonical = (path = ''): string | URL => {
-  const url = String(new URL(path, 'https://example.com' ));
+  const url = String(new URL(path, 'https://example.com'));
   if (path && url.endsWith('/')) {
     return url.slice(0, -1);
   }
-  
+
   return url;
 };
 

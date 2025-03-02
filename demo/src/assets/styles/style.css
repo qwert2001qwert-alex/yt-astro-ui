@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
 /*
@@ -7,7 +7,6 @@
  */
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 /* 
  * Define theme variables
  * Read more: https://tailwindcss.com/docs/colors#referencing-other-variables
@@ -15,7 +14,7 @@
 :root {
   /* Colors */
   --yt-color-background: #f3f3f6;
-  --yt-color-foreground: #2F3133;
+  --yt-color-foreground: #2f3133;
   --yt-color-card: hsl(0 0% 100%);
   --yt-color-card-foreground: hsl(0 0% 3.9%);
   --yt-color-popover: hsl(0 2% 21%);
@@ -48,7 +47,7 @@
 .dark {
   /* Colors */
   --yt-color-background: #0c0e11;
-  --yt-color-foreground: #C6C6C9;
+  --yt-color-foreground: #c6c6c9;
   --yt-color-card: hsl(220 6% 10%);
   --yt-color-card-foreground: hsl(0 0% 98%);
   --yt-color-popover: hsl(0 0% 3.9%);
@@ -73,7 +72,7 @@
     background-color: black;
     color: snow;
   }
-  
+
   color-scheme: dark;
 }
 
@@ -82,7 +81,7 @@
   --color-input: var(--yt-color-input);
   --color-ring: var(--yt-color-ring);
 
-  --color-background:var(--yt-color-background);
+  --color-background: var(--yt-color-background);
   --color-foreground: var(--yt-color-foreground);
 
   --color-card: var(--yt-color-card);
@@ -112,7 +111,7 @@
 }
 
 @utility bg-stripe {
-  @apply text-black/10 dark:text-white/12.5 bg-[size:8px_8px] bg-left-top bg-[image:repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)]
+  @apply text-black/10 dark:text-white/12.5 bg-[size:8px_8px] bg-left-top bg-[image:repeating-linear-gradient(315deg,currentColor_0,currentColor_1px,transparent_0,transparent_50%)];
 }
 
 pre.astro-code {
@@ -121,13 +120,15 @@ pre.astro-code {
 }
 
 a.link {
-  background-image: linear-gradient(currentColor,currentColor);
+  background-image: linear-gradient(currentColor, currentColor);
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0 1px;
   font-weight: 600;
   position: relative;
-  transition: background-size .25s,color .25s ease;
+  transition:
+    background-size 0.25s,
+    color 0.25s ease;
 }
 a.link:hover {
   background-size: 100% 1px;

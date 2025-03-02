@@ -2,9 +2,10 @@
 title: Breadcrumbs
 category: UI
 ---
+
 # Breadcrumbs
 
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 import Demo from '~/components/Demo.astro';
 import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
 
@@ -16,17 +17,17 @@ import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
       <BreadcrumbsItem label="Current Page" currentPage={true} />
     </Breadcrumbs>
   </Demo>
-  
-  <Demo title="With icon variant">
-    <Breadcrumbs>
-      <BreadcrumbsItem href="/" label="Home" hasIcon>
-        <Icon name="tabler:home" slot="icon" />
-      </BreadcrumbsItem>
-      <BreadcrumbsItem href="/products" label="Products" />
-      <BreadcrumbsItem label="Current Page" currentPage={true} />
-    </Breadcrumbs>
-  </Demo>
-  
+
+<Demo title="With icon variant">
+  <Breadcrumbs>
+    <BreadcrumbsItem href="/" label="Home" hasIcon>
+      <Icon name="tabler:home" slot="icon" />
+    </BreadcrumbsItem>
+    <BreadcrumbsItem href="/products" label="Products" />
+    <BreadcrumbsItem label="Current Page" currentPage={true} />
+  </Breadcrumbs>
+</Demo>
+
   <Demo title="Custom separator variant">
     <Breadcrumbs>
       <BreadcrumbsItem href="/" label="Home" hasIcon>
@@ -44,7 +45,6 @@ import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
     </Breadcrumbs>
   </Demo>
 </div>
-
 
 ## Usage
 
@@ -90,9 +90,9 @@ import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
 <!-- Array props -->
 <Breadcrumbs
   items={[
-    {href: '/', icon: 'tabler:home'},
-    {href: '/products', label: 'Products'},
-    {href: '/products', label: 'Current Page', currentPage: true},
+    { href: '/', icon: 'tabler:home' },
+    { href: '/products', label: 'Products' },
+    { href: '/products', label: 'Current Page', currentPage: true },
   ]}
 />
 ```
@@ -103,27 +103,20 @@ import { Breadcrumbs, BreadcrumbsItem } from 'yt-astro-ui';
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop      | Type       | Default    | Description |
-    |------------|------------|------------|------------|
-    | class | string | '' | Additional CSS classes to apply to the breadcrumbs wrapper |
-    | ariaLabel | string | 'Breadcrumbs' | The label for the breadcrumbs navigation |
+    | Prop | Type | Default | Description | |------------|------------|------------|------------| | class | string | ''
+    | Additional CSS classes to apply to the breadcrumbs wrapper | | ariaLabel | string | 'Breadcrumbs' | The label for
+    the breadcrumbs navigation |
   </div>
 </div>
-
-
-
 
 ### BreadcrumbsItem
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop      | Type       | Default    | Description |
-    |------------|------------|------------|------------|
-    | href | string | '#' | The URL the breadcrumb item links to |
-    | label | string | 'Breadcrumb' | The text to display (or screen reader text when using icons) |
-    | currentPage | boolean | false | Whether this item represents the current page |
-    | hasIcon | boolean | false | Whether this item displays an icon instead of text |
-    | class | string | '' | Additional CSS classes to apply to the item |
+    | Prop | Type | Default | Description | |------------|------------|------------|------------| | href | string | '#'
+    | The URL the breadcrumb item links to | | label | string | 'Breadcrumb' | The text to display (or screen reader
+    text when using icons) | | currentPage | boolean | false | Whether this item represents the current page | | hasIcon
+    | boolean | false | Whether this item displays an icon instead of text | | class | string | '' | Additional CSS
+    classes to apply to the item |
   </div>
 </div>
-

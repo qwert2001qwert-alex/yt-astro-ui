@@ -6,7 +6,7 @@ import merge from 'lodash.merge';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost } from '~/utils/content';
 import type { MetaData } from '~/types';
-import PageLayout from '~/layouts/PageLayout.astro'
+import PageLayout from '~/layouts/PageLayout.astro';
 
 export const prerender = true;
 
@@ -27,7 +27,6 @@ const metadata = merge(
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
-
 ---
 
 <PageLayout metadata={metadata} title={post?.category?.title}>

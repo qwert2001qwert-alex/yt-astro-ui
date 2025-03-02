@@ -1,12 +1,13 @@
 ---
-import { ANALYTICS } from 'vendor:config'
-import GoogleAnalytics from './GoogleAnalytics.astro'
+import { ANALYTICS } from 'vendor:config';
+import GoogleAnalytics from './GoogleAnalytics.astro';
 ---
+
 {
   ANALYTICS?.vendors?.googleAnalytics?.id ? (
-  <GoogleAnalytics
-    id={String(ANALYTICS.vendors.googleAnalytics.id)}
-    partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
-  />
-    ) : null
-  }
+    <GoogleAnalytics
+      id={String(ANALYTICS.vendors.googleAnalytics.id)}
+      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
+    />
+  ) : null
+}

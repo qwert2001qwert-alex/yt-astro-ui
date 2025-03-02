@@ -15,7 +15,7 @@ export interface Post {
   publishDate: Date;
   /**  */
   updateDate?: Date;
-  
+
   /**  */
   title: string;
   /** Optional summary of post content. */
@@ -27,7 +27,7 @@ export interface Post {
   category?: Taxonomy;
   /**  */
   tags?: Taxonomy[];
-  
+
   /**  */
   metadata?: MetaData;
 
@@ -92,4 +92,3 @@ export interface IVideo {
   src: string;
   type?: string;
 }
-

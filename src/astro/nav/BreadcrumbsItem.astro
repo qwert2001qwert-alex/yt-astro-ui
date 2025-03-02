@@ -1,39 +1,33 @@
 ---
 /**
-  * Breadcrumbs Item Component
-  *
-  * @description An individual breadcrumb item that can be a link or current page indicator
-  */
+ * Breadcrumbs Item Component
+ *
+ * @description An individual breadcrumb item that can be a link or current page indicator
+ */
 interface Props {
   /**
    * URL for the breadcrumb link
    */
-  href?: string
+  href?: string;
   /**
    * Text label for the breadcrumb
    */
-  label: string
+  label: string;
   /**
    * Whether this item represents the current page
    */
-  currentPage?: boolean
+  currentPage?: boolean;
   /**
    * Whether this item has an icon
    */
-  hasIcon?: boolean
+  hasIcon?: boolean;
   /**
    * Additional classes to apply to the item
    */
-  class?: string
+  class?: string;
 }
 
-const {
-  href = '#',
-  label = 'Breadcrumb',
-  currentPage = false,
-  hasIcon = false,
-  class: classNames,
-} = Astro.props
+const { href = '#', label = 'Breadcrumb', currentPage = false, hasIcon = false, class: classNames } = Astro.props;
 ---
 
 <li class:list={['item', classNames]} itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">

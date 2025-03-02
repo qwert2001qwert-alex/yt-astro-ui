@@ -2,6 +2,7 @@
 title: Image
 category: UI
 ---
+
 # Image
 
 import Demo from '~/components/Demo.astro';
@@ -14,7 +15,6 @@ import { Image } from 'yt-astro-ui';
     </div>
   </Demo>
 </div>
-
 
 ## Usage
 
@@ -46,31 +46,28 @@ import myImage from '~/assets/images/local_placeholder.jpeg';
 ```
 
 ## Props
+
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop      | Type       | Default    | Description    |
-    |------------|------------|------------|--------------|
-    | src | string | '' | Specifies the path to the image |
-    | width | number | default | Specifies the width of an image (px) |
-    | height | string | '' | Specifies the height of an image |
-    | alt | string | '' | Specifies an alternate text for an image |
-    | loading | 'eager' \| 'lazy' | 'eager' | Specifies whether a browser should load an image immediately or to defer loading of images until some conditions are met |
-    | decoding | 'sync' \| 'async' \| 'auto' | 'sync' | Whether it should wait for the image to be decoded before presenting other content updates or not. [Read more](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) |
-    | sizes | string | '' | Specifies image sizes for different page layouts |
-    | fetchpriority | 'high' \| 'low' \| 'auto' | 'auto' | Represents a hint to the browser indicating how it should prioritize fetching a particular image relative to other images. [Read more](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority) |
-    | widths | string | '' | '' |
-    | aspectRatio | string | '' | '' |
-    | objectPosition | string | '' | '' |
-    | format | string | '' | '' |
-    | layout | 'constrained' \| 'fixed' \| 'fullWidth' | 'constrained' | Image size relative to container |
+    | Prop | Type | Default | Description | |------------|------------|------------|--------------| | src | string | ''
+    | Specifies the path to the image | | width | number | default | Specifies the width of an image (px) | | height |
+    string | '' | Specifies the height of an image | | alt | string | '' | Specifies an alternate text for an image | |
+    loading | 'eager' \| 'lazy' | 'eager' | Specifies whether a browser should load an image immediately or to defer
+    loading of images until some conditions are met | | decoding | 'sync' \| 'async' \| 'auto' | 'sync' | Whether it
+    should wait for the image to be decoded before presenting other content updates or not. [Read
+    more](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding) | | sizes | string | '' |
+    Specifies image sizes for different page layouts | | fetchpriority | 'high' \| 'low' \| 'auto' | 'auto' | Represents
+    a hint to the browser indicating how it should prioritize fetching a particular image relative to other images.
+    [Read more](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority) | | widths | string |
+    '' | '' | | aspectRatio | string | '' | '' | | objectPosition | string | '' | '' | | format | string | '' | '' | |
+    layout | 'constrained' \| 'fixed' \| 'fullWidth' | 'constrained' | Image size relative to container |
   </div>
 </div>
 
 ### layout
+
 Helper attribute for setting image size
 
 - **constrained** - If screen is wider than the max size, image width is the max size, otherwise it's the width of the screen <br />Will be rendered with: `(min-width: ${width}px) ${width}px, 100vw`
 - **fixed** - Image is always the same width, whatever the size of the screen. Will be rendered with: `${width}px`
 - **fullWidth** - Image is always the width of the screen. Will be rendered with: `100vw`
-
-

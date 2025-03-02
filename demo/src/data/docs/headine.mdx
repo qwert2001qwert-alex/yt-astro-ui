@@ -10,14 +10,13 @@ import { Headline } from 'yt-astro-ui';
 
 <div className="space-y-12">
   <Demo title="Default">
-    <Headline 
+    <Headline
       title="Why choose Astro"
       subtitle="Each of the following features enhances Astro's value proposition."
       tagline="Services"
     />
   </Demo>
 </div>
-
 
 ## Usage
 
@@ -27,15 +26,13 @@ import { Headline } from 'yt-astro-ui';
 ---
 
 <!-- Default -->
-<Headline 
-  title="Why choose Astro"
-/>
+<Headline title="Why choose Astro" />
 
-<Headline 
+<Headline
   title="Why choose Astro"
   subtitle="Each of the following features enhances Astro's value proposition."
   tagline="Services"
-  classes={{ 
+  classes={{
     container: 'text-left',
     title: 'text-xl md:text-5xl',
     subtitle: 'text-red-500',
@@ -44,14 +41,11 @@ import { Headline } from 'yt-astro-ui';
 />
 
 <!-- Props -->
-<Headline 
-  title={title} 
-  subtitle={subtitle} tagline={tagline} 
-  classes={classes?.headline as Record<string, string>}
-/>
+<Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
 ```
 
 ## Props
+
 <div className="overflow-x-auto">
   <div className="min-w-xl">
     | Prop      | Type      | Default   |
@@ -66,5 +60,3 @@ import { Headline } from 'yt-astro-ui';
     | classes.tagline | string | '' |
   </div>
 </div>
-
-

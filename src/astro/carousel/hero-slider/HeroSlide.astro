@@ -1,12 +1,12 @@
 ---
-import { twMerge } from 'tailwind-merge'
-import type { HTMLTag } from 'astro/types'
-import type { ICallToAction, IImage } from 'yt-astro-ui/types'
-import Image from 'yt-astro-ui/astro/image/Image.astro'
-import { Button } from 'yt-astro-ui/svelte/button/index.ts'
+import { twMerge } from 'tailwind-merge';
+import type { HTMLTag } from 'astro/types';
+import type { ICallToAction, IImage } from 'yt-astro-ui/types';
+import Image from 'yt-astro-ui/astro/image/Image.astro';
+import { Button } from 'yt-astro-ui/svelte/button/index.ts';
 
 export interface Props {
-  asHeader?: HTMLTag,
+  asHeader?: HTMLTag;
   title?: string;
   description?: string;
   image: IImage | string;
@@ -21,26 +21,30 @@ const {
   title = await Astro.slots.render('title'),
   description = await Astro.slots.render('description'),
   callToAction,
-} = Astro.props
+} = Astro.props;
 
 const img = {
   src: typeof image === 'string' ? image : image?.src,
   alt: typeof image === 'string' ? title : image?.alt,
   aspectRatio: typeof image === 'string' ? '16:9' : image?.aspectRatio || '16:9',
-}
+};
 
 const {
   container: containerClass = 'h-96',
   image: imageClass = '',
   title: titleClass = '',
   description: descriptionClass = '',
-} = classes
+} = classes;
 
-const WrapperHeaderTag = asHeader
+const WrapperHeaderTag = asHeader;
 ---
 
 <div
-  class={twMerge('swiper-slide overflow-hidden bg-zinc-700 text-zinc-200 dark:bg-card dark:text-card-foreground', containerClass)}>
+  class={twMerge(
+    'swiper-slide overflow-hidden bg-zinc-700 text-zinc-200 dark:bg-card dark:text-card-foreground',
+    containerClass
+  )}
+>
   <div class="slide flex flex-col-reverse justify-between md:flex-row h-full">
     <div class="w-full flex items-center justify-center">
       <div class="p-6 md:px-12 lg:px-20 xl:px-24 w-full h-full md:h-auto">
@@ -50,7 +54,10 @@ const WrapperHeaderTag = asHeader
             <div class="flex flex-col h-full justify-between">
               <div class="mb-6">
                 <WrapperHeaderTag
-                  class={twMerge('text-white text-base md:text-lg xl:text-2xl font-medium md:font-semibold mb-2', titleClass)}
+                  class={twMerge(
+                    'text-white text-base md:text-lg xl:text-2xl font-medium md:font-semibold mb-2',
+                    titleClass
+                  )}
                 >
                   {title}
                 </WrapperHeaderTag>
@@ -69,9 +76,24 @@ const WrapperHeaderTag = asHeader
     </div>
     <div class="w-full md:h-auto">
       {
-        img && <>
-          {callToAction?.href ? (
-            <a href={callToAction?.href}>
+        img && (
+          <>
+            {callToAction?.href ? (
+              <a href={callToAction?.href}>
+                <Image
+                  src={img.src}
+                  class={twMerge('w-full md:h-full bg-gray-400 dark:bg-slate-700', imageClass)}
+                  widths={[400, 900]}
+                  width={400}
+                  sizes="(max-width: 900px) 400px, 900px"
+                  alt={img.alt}
+                  aspectRatio={img.aspectRatio}
+                  layout="cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            ) : (
               <Image
                 src={img.src}
                 class={twMerge('w-full md:h-full bg-gray-400 dark:bg-slate-700', imageClass)}
@@ -84,22 +106,9 @@ const WrapperHeaderTag = asHeader
                 loading="lazy"
                 decoding="async"
               />
-            </a>
-          ) : (
-            <Image
-              src={img.src}
-              class={twMerge('w-full md:h-full bg-gray-400 dark:bg-slate-700', imageClass)}
-              widths={[400, 900]}
-              width={400}
-              sizes="(max-width: 900px) 400px, 900px"
-              alt={img.alt}
-              aspectRatio={img.aspectRatio}
-              layout="cover"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
-        </>
+            )}
+          </>
+        )
       }
     </div>
   </div>

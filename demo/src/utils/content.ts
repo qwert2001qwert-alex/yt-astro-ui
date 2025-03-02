@@ -16,9 +16,7 @@ const generatePermalink = async ({
 }) => {
   const permalink = POST_PERMALINK_PATTERN.replace('%slug%', slug)
     .replace('%id%', id)
-    .replace('%category%', category || '')
-  ;
-
+    .replace('%category%', category || '');
   return permalink
     .split('/')
     .map((el) => trimSlash(el))
@@ -46,7 +44,7 @@ const getNormalizedPost = async (post: CollectionEntry<'docs'>): Promise<Post> =
 
   const publishDate = new Date(rawPublishDate);
   const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
-  
+
   const category = rawCategory
     ? {
         slug: cleanSlug(rawCategory),
@@ -66,7 +64,7 @@ const getNormalizedPost = async (post: CollectionEntry<'docs'>): Promise<Post> =
 
     publishDate: publishDate,
     updateDate: updateDate,
-    
+
     title: title,
     excerpt: excerpt,
     image: image,
@@ -124,7 +122,7 @@ export const getCategories = async () => {
       categories[post.category?.slug] = post.category;
     }
   });
-  
+
   return categories;
 };
 
@@ -138,15 +136,15 @@ export const getPostsWithCategory = async () => {
     }
   });
 
-  console.log(categories)
-  
+  console.log(categories);
+
   return posts.reduce((acc, doc) => {
     const slug = doc.category!.slug;
     // @ts-ignore
     if (!acc[slug]) acc[slug] = [];
     // @ts-ignore
     acc[slug].push(doc);
-    
+
     return acc;
   }, {});
 };
@@ -244,7 +242,9 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 
   return Array.from(Object.keys(tags)).flatMap((tagSlug) =>
     paginate(
-      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem: { slug: string; }) => elem.slug === tagSlug)),
+      posts.filter(
+        (post) => Array.isArray(post.tags) && post.tags.find((elem: { slug: string }) => elem.slug === tagSlug)
+      ),
       {
         params: { tag: tagSlug, docs: TAG_BASE || undefined },
         pageSize: 50,

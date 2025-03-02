@@ -11,18 +11,18 @@ import Card2 from 'yt-astro-ui/astro/card/Card2.astro';
 
 export interface Props extends IWidget, Omit<IHeadline, 'classes'> {
   useToRender?: 'Card1' | 'Card2';
-  items?: ICard1[] | ICard2[],
+  items?: ICard1[] | ICard2[];
   isAfterContent: boolean;
   withNavigation: boolean;
 }
 
 const {
   useToRender = 'Card1',
-  
+
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
-  
+
   items = [] as ICard1[] | ICard2[],
   isAfterContent = false,
 
@@ -38,7 +38,12 @@ const cardComponents = { Card1, Card2 };
 const Component = cardComponents[useToRender];
 ---
 
-<WidgetWrapper id={id} isDark={isDark} bg={bg} containerClass={`${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : 'px-0 md:px-6 py-6 md:py-8 lg:py-8'} ${classes?.container}`}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  bg={bg}
+  containerClass={`${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : 'px-0 md:px-6 py-6 md:py-8 lg:py-8'} ${classes?.container}`}
+>
   <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
 
   {
@@ -50,10 +55,13 @@ const Component = cardComponents[useToRender];
           centered-slides="true"
           space-between="10"
           slides-per-view="1.2"
-          navigation={ withNavigation ? JSON.stringify({
-            nextEl: `#btn-next-${id}`,
-            prevEl: `#btn-prev-${id}`,
-          }) : false
+          navigation={
+            withNavigation
+              ? JSON.stringify({
+                  nextEl: `#btn-next-${id}`,
+                  prevEl: `#btn-prev-${id}`,
+                })
+              : false
           }
           breakpoints={JSON.stringify({
             // 640: sm
@@ -75,8 +83,8 @@ const Component = cardComponents[useToRender];
               slidesPerView: 4,
               centeredSlides: false,
               spaceBetween: 20,
-            }})
-          }
+            },
+          })}
           {...rest}
         >
           {items.map((item) => (
@@ -86,14 +94,23 @@ const Component = cardComponents[useToRender];
           ))}
         </swiper-container>
 
-        <!-- Navigation buttons -->
         {withNavigation && (
-          <button type="button" id={`btn-prev-${id}`} class="btn-shadow hidden md:flex items-center justify-center cursor-pointer absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white text-black rounded-full transition-opacity opacity-0">
-            <Icon name="tabler:chevron-left" class="w-7 h-7" />
-          </button>
-          <button type="button"  id={`btn-next-${id}`} class="btn-shadow hidden md:flex items-center justify-center cursor-pointer absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white text-black rounded-full transition-opacity ">
-            <Icon name="tabler:chevron-right" class="w-7 h-7" />
-          </button>
+          <>
+            <button
+              type="button"
+              id={`btn-prev-${id}`}
+              class="btn-shadow hidden md:flex items-center justify-center cursor-pointer absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white text-black rounded-full transition-opacity opacity-0"
+            >
+              <Icon name="tabler:chevron-left" class="w-7 h-7" />
+            </button>
+            <button
+              type="button"
+              id={`btn-next-${id}`}
+              class="btn-shadow hidden md:flex items-center justify-center cursor-pointer absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white text-black rounded-full transition-opacity "
+            >
+              <Icon name="tabler:chevron-right" class="w-7 h-7" />
+            </button>
+          </>
         )}
       </div>
     )
@@ -110,18 +127,29 @@ const Component = cardComponents[useToRender];
     matches.forEach((elem) => {
       const id = elem.dataset.id;
 
-      elem.addEventListener('swiperreachend', () => {
-        removeClass(`#btn-next-${id}`, 'opacity-100');
-        addClass(`#btn-next-${id}`, 'opacity-0');
-      }, false);
-      elem.addEventListener('swiperreachbeginning', () => {
-        addClass(`#btn-prev-${id}`, 'opacity-0');
-      }, false);
-      elem.addEventListener('swiperfromedge', () => {
-        removeClass(`#btn-prev-${id}`, 'opacity-0');
-        addClass(`#btn-next-${id}`, 'opacity-100');
-      }, false);
+      elem.addEventListener(
+        'swiperreachend',
+        () => {
+          removeClass(`#btn-next-${id}`, 'opacity-100');
+          addClass(`#btn-next-${id}`, 'opacity-0');
+        },
+        false
+      );
+      elem.addEventListener(
+        'swiperreachbeginning',
+        () => {
+          addClass(`#btn-prev-${id}`, 'opacity-0');
+        },
+        false
+      );
+      elem.addEventListener(
+        'swiperfromedge',
+        () => {
+          removeClass(`#btn-prev-${id}`, 'opacity-0');
+          addClass(`#btn-next-${id}`, 'opacity-100');
+        },
+        false
+      );
     });
   }
 </script>
-

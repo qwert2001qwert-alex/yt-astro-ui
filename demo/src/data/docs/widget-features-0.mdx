@@ -2,6 +2,7 @@
 title: Features 0
 category: Widget
 ---
+
 import Demo from '~/components/Demo.astro';
 import { Features0Widget } from 'yt-astro-ui';
 
@@ -21,6 +22,7 @@ import { Features0Widget } from 'yt-astro-ui';
 ---
 import { Features } from 'yt-astro-ui';
 ---
+
 <Features0Widget
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
@@ -30,13 +32,12 @@ import { Features } from 'yt-astro-ui';
 </Features0Widget>
 ```
 
-
 <Demo title="With custom classes">
   <Features0Widget
     title="Lorem Ipsum"
     subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
     tagline="Features"
-    classes={{container: 'text-center', headline: {container: 'text-left', title: '', subtitle: '', tagline: ''}}}
+    classes={{ container: 'text-center', headline: { container: 'text-left', title: '', subtitle: '', tagline: '' } }}
   >
     Content
   </Features0Widget>
@@ -52,13 +53,13 @@ import { Features } from 'yt-astro-ui';
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   tagline="Features"
   classes={{
-    container: 'text-center', 
+    container: 'text-center',
     headline: {
-      container: 'text-left', 
-      title: '', 
-      subtitle: '', 
-      tagline: ''
-    }
+      container: 'text-left',
+      title: '',
+      subtitle: '',
+      tagline: '',
+    },
   }}
 >
   Content
@@ -69,19 +70,16 @@ import { Features } from 'yt-astro-ui';
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop | Type | Default | Description |
-    |-----------|------------|------------|------------|
-    | `title` | `string` | - | `Title` in [Headline](/docs/feature-card-1) component |
-    | `subtitle` | `string` | - | `Subtitle` in [Headline](/docs/feature-card-1) component |
-    | `tagline` | `string` | - | `Tagline` in [Headline](/docs/feature-card-1) component |
-    | `columns` | `number` | `1` | Number of columns in the grid. From 1 to 4 |
-    | `id` | `string` | - | Specify a unique id for the section |
-    | `isDark` | `boolean` | `false` | Adds the `dark` CSS class to the wrapper |
-    | `bg` | `string` | - | Set background element |
-    | `classes.container` | `string` | - | CSS classes for the root container |
-    | `classes.headline.container` | `string` | - | CSS classes for the `container` in the [Headline](/docs/feature-card-1) component |
-    | `classes.headline.title` | `string` | - | CSS classes for the `title` in the [Headline](/docs/feature-card-1) component |
-    | `classes.headline.subtitle` | `string` | - | CSS classes for the `subtitle` in the [Headline](/docs/feature-card-1) component |
-    | `classes.headline.tagline` | `string` | - | CSS classes for the `tagline` in the [Headline](/docs/feature-card-1) component |
+    | Prop | Type | Default | Description | |-----------|------------|------------|------------| | `title` | `string` |
+    - | `Title` in [Headline](/docs/feature-card-1) component | | `subtitle` | `string` | - | `Subtitle` in
+    [Headline](/docs/feature-card-1) component | | `tagline` | `string` | - | `Tagline` in
+    [Headline](/docs/feature-card-1) component | | `columns` | `number` | `1` | Number of columns in the grid. From 1 to
+    4 | | `id` | `string` | - | Specify a unique id for the section | | `isDark` | `boolean` | `false` | Adds the `dark`
+    CSS class to the wrapper | | `bg` | `string` | - | Set background element | | `classes.container` | `string` | - |
+    CSS classes for the root container | | `classes.headline.container` | `string` | - | CSS classes for the `container`
+    in the [Headline](/docs/feature-card-1) component | | `classes.headline.title` | `string` | - | CSS classes for the
+    `title` in the [Headline](/docs/feature-card-1) component | | `classes.headline.subtitle` | `string` | - | CSS
+    classes for the `subtitle` in the [Headline](/docs/feature-card-1) component | | `classes.headline.tagline` |
+    `string` | - | CSS classes for the `tagline` in the [Headline](/docs/feature-card-1) component |
   </div>
 </div>

@@ -2,6 +2,7 @@
 title: Widget Wrapper
 category: W.Feature
 ---
+
 import Demo from '~/components/Demo.astro';
 import { WidgetWrapper } from 'yt-astro-ui';
 
@@ -16,7 +17,6 @@ A component for fixing an element's width to the current breakpoint.
   </WidgetWrapper>
   Content after
 </Demo>
-
 
 ```astro
 ---
@@ -38,6 +38,7 @@ import { WidgetWrapper } from 'yt-astro-ui';
     <Fragment slot="bg">
       <div className="absolute inset-0 bg-primary/10"></div>
     </Fragment>
+
   </WidgetWrapper>
   Content after
 </Demo>
@@ -77,14 +78,9 @@ import { WidgetWrapper } from 'yt-astro-ui';
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop | Type | Default | Description
-    |-----------|------------|------------|------------|
-    | `id` | `string` | - | Set to specify a unique id for an HTML element |
-    | `as` | `string` | `section` | HTML tag name for the wrapper |
-    | `containerClass` | `string` | - | Additional CSS classes to apply to the wrapper |
-    | `isDark` | `boolean` | `false` | Adds the `dark` CSS class to the wrapper |
-    | `bg` | `string` | - | Set background element |
+    | Prop | Type | Default | Description |-----------|------------|------------|------------| | `id` | `string` | - |
+    Set to specify a unique id for an HTML element | | `as` | `string` | `section` | HTML tag name for the wrapper | |
+    `containerClass` | `string` | - | Additional CSS classes to apply to the wrapper | | `isDark` | `boolean` | `false`
+    | Adds the `dark` CSS class to the wrapper | | `bg` | `string` | - | Set background element |
   </div>
 </div>
-
-

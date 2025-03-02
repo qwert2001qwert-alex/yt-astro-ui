@@ -1,7 +1,7 @@
 ---
 import type { BreadcrumbsItem } from '.';
 import { BreadcrumbsItem } from 'yt-astro-ui';
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 
 /**
  * Breadcrumbs Component
@@ -14,7 +14,7 @@ interface Props {
    * Additional classes to apply to the breadcrumbs container
    */
   class?: string;
-  
+
   /**
    * Breadcrumb items to render
    */
@@ -26,7 +26,7 @@ interface Props {
    * Typically used to display the current location within an application or website.
    */
   items: BreadcrumbsItem[];
-  
+
   /**
    * Accessible label for the breadcrumb navigation
    * @default 'Breadcrumbs'
@@ -42,11 +42,12 @@ const { class: classNames = 'text-gray-600 dark:text-gray-400', ariaLabel = 'Bre
     {items.length === 0 && <slot />}
 
     {
-      items.length > 0 && items.map(item => (
-        <BreadcrumbsItem href={item.href} label={item?.label} hasIcon={!!(item?.icon || false)} {...item}>
-          {item?.icon && <Icon name={item?.icon} slot="icon" />}
-        </BreadcrumbsItem>
-      ))
+      items.length > 0 &&
+        items.map((item) => (
+          <BreadcrumbsItem href={item.href} label={item?.label} hasIcon={!!(item?.icon || false)} {...item}>
+            {item?.icon && <Icon name={item?.icon} slot="icon" />}
+          </BreadcrumbsItem>
+        ))
     }
   </ol>
 </nav>

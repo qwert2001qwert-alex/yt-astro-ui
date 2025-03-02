@@ -2,18 +2,19 @@
 title: Layout
 category: UI
 ---
+
 # Layout
 
-
 ## Usage
-Create ```src/layouts/PageLayout.astro``` in your project
+
+Create `src/layouts/PageLayout.astro` in your project
 
 ```astro
 ---
 import { Layout } from 'yt-astro-ui';
 
 // Import your CSS styles
-import "~/assets/styles/tailwind.css";
+import '~/assets/styles/tailwind.css';
 
 // Use your Favicons and other components if you need to
 import Favicons from '~/components/Favicons.astro';
@@ -26,25 +27,20 @@ export interface Props {
 
 const { metadata } = Astro.props;
 ---
+
 <Layout metadata={metadata}>
   <Favicons slot="favicons" />
   <CustomScripts slot="scripts" />
   <CustomStyles slot="styles" />
-  
+
   <!-- Your content -->
 </Layout>
-
-
 ```
 
 ## Props
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop      | Type       | Default    |
-    |-----------|------------|------------|
-    | metadata | '' | '' |
+    | Prop | Type | Default | |-----------|------------|------------| | metadata | '' | '' |
   </div>
 </div>
-
-

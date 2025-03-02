@@ -11,14 +11,14 @@ interface Props {
   /**
    * Additional classes to apply to the accordion container
    */
-  class?: string
+  class?: string;
   /**
    * Accordion items to render
    */
-  children: AccordionItem | AccordionItem[]
+  children: AccordionItem | AccordionItem[];
 }
 
-const { class: classNames } = Astro.props
+const { class: classNames } = Astro.props;
 ---
 
 <ul class:list={['accordion', classNames]}>

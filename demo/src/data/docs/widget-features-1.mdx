@@ -2,6 +2,7 @@
 title: Features 1
 category: Widget
 ---
+
 import Demo from '~/components/Demo.astro';
 import { Features1Widget } from 'yt-astro-ui';
 
@@ -32,9 +33,9 @@ import { Features1Widget } from 'yt-astro-ui';
           image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
           callToAction: { href: '/', text: 'Read more' },
           data: [
-            {name: 'Param name', value: 'Param value'},
-            {name: 'Param name', value: 'Param value'},
-            {name: 'Param name', value: 'Param value'},
+            { name: 'Param name', value: 'Param value' },
+            { name: 'Param name', value: 'Param value' },
+            { name: 'Param name', value: 'Param value' },
           ],
         },
         {
@@ -52,7 +53,6 @@ import { Features1Widget } from 'yt-astro-ui';
     />
   </Demo>
 </div>
-
 
 ```astro
 ---
@@ -82,9 +82,9 @@ import { Features1Widget } from 'yt-astro-ui';
       image: { src: '~/assets/images/local_placeholder.jpeg', alt: 'Lorem Ipsum' },
       callToAction: { href: '/', text: 'Read more' },
       data: [
-        {name: 'Param name', value: 'Param value'},
-        {name: 'Param name', value: 'Param value'},
-        {name: 'Param name', value: 'Param value'},
+        { name: 'Param name', value: 'Param value' },
+        { name: 'Param name', value: 'Param value' },
+        { name: 'Param name', value: 'Param value' },
       ],
     },
     {
@@ -130,7 +130,6 @@ import { Features1Widget } from 'yt-astro-ui';
     ]}
   />
 </Demo>
-
 
 ```astro
 ---
@@ -205,7 +204,7 @@ import { FeaturesWidget } from 'yt-astro-ui';
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   columns={3}
-  items={[...]}
+  items={[]}
 >
   <Fragment slot="bg">
     <div className="absolute inset-0 bg-primary/20"></div>

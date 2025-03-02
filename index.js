@@ -31,5 +31,5 @@ export { default as TabsPanel } from './src/astro/tabs/TabsPanel.astro';
 export { default as TabsTab } from './src/astro/tabs/TabsTab.astro';
 
 /* Navs */
-export { default as Breadcrumbs } from './src/astro/nav/Breadcrumbs.astro'
-export { default as BreadcrumbsItem } from './src/astro/nav/BreadcrumbsItem.astro'
+export { default as Breadcrumbs } from './src/astro/nav/Breadcrumbs.astro';
+export { default as BreadcrumbsItem } from './src/astro/nav/BreadcrumbsItem.astro';

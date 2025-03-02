@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components'
-import { twMerge } from 'tailwind-merge'
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
 
 export interface Props {
   label?: string;
@@ -12,20 +12,28 @@ export interface Props {
 
 const {
   label = 'Toggle between Dark and Light mode',
-  class: className = 'dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5',
+  class:
+    className = 'dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5',
   iconClass = 'w-6 h-6',
   iconName = 'tabler:sun',
   initialMode = 'system',
-} = Astro.props
+} = Astro.props;
 ---
 
-{!(initialMode.endsWith(':only')) && (
-  <button type="button" class={twMerge('cursor-pointer inline-flex items-center', className)} aria-label={label} data-aw-toggle-color-scheme>
-    <slot>
-      <Icon name={iconName} class={iconClass} />
-    </slot>
-  </button>
-)}
+{
+  !initialMode.endsWith(':only') && (
+    <button
+      type="button"
+      class={twMerge('cursor-pointer inline-flex items-center', className)}
+      aria-label={label}
+      data-aw-toggle-color-scheme
+    >
+      <slot>
+        <Icon name={iconName} class={iconClass} />
+      </slot>
+    </button>
+  )
+}
 
 <script is:inline define:vars={{ mode: initialMode }}>
   // Only run once
@@ -36,40 +44,40 @@ const {
 
     function applyTheme(theme) {
       if (theme === 'dark') {
-        root.classList.add('dark')
+        root.classList.add('dark');
       } else {
-        root.classList.remove('dark')
+        root.classList.remove('dark');
       }
     }
 
-    const initialize = function() {
+    const initialize = function () {
       if ((mode && mode.endsWith(':only')) || (!localStorage.theme && mode !== 'system')) {
-        applyTheme(mode.replace(':only', ''))
+        applyTheme(mode.replace(':only', ''));
       } else if (
         localStorage.theme === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
-        applyTheme('dark')
+        applyTheme('dark');
       } else {
-        applyTheme('light')
+        applyTheme('light');
       }
-    }
-    initialize()
+    };
+    initialize();
 
     // Add click handlers to all toggles
     document.addEventListener('click', (e) => {
       if (e.target.closest('[data-aw-toggle-color-scheme]')) {
         if (mode.endsWith(':only')) {
-          return
+          return;
         }
-        root.classList.toggle('dark')
+        root.classList.toggle('dark');
         localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
       }
-    })
+    });
 
     // Listen for view transitions
     document.addEventListener('astro:after-swap', () => {
-      initialize()
-    })
+      initialize();
+    });
   }
 </script>

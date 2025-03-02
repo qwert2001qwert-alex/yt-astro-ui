@@ -1,53 +1,46 @@
 ---
 /**
-  * Accordion Item Component
-  *
-  * @description An individual accordion item that can be expanded/collapsed with smooth animations
-  */
+ * Accordion Item Component
+ *
+ * @description An individual accordion item that can be expanded/collapsed with smooth animations
+ */
 interface Props {
   /**
    * Optional name attribute for the details element
    */
-  name?: string
+  name?: string;
   /**
    * Title text displayed in the accordion header
    */
-  title: string
+  title: string;
   /**
    * Additional classes to apply to the item
    */
-  class?: string
+  class?: string;
   /**
    * Content to be rendered inside the accordion item
    */
-  children: any
+  children: any;
   /**
    * HTML tag to use for the title (h2-h6)
    * @default 'h3'
    */
-  tagName?: string
+  tagName?: string;
   /**
    * Visual style variant of the accordion
    * @default 'default'
    */
-  variant?: 'default' | 'chevron'
+  variant?: 'default' | 'chevron';
   /**
    * Whether the accordion item is initially open
    * @default false
    */
-  open?: boolean
+  open?: boolean;
 }
 
-const {
-  name,
-  title,
-  class: classNames,
-  tagName = 'h3',
-  variant = 'default',
-  open = false,
-} = Astro.props
+const { name, title, class: classNames, tagName = 'h3', variant = 'default', open = false } = Astro.props;
 
-const Tag = tagName
+const Tag = tagName;
 ---
 
 <li class:list={['item', classNames]}>
@@ -59,13 +52,7 @@ const Tag = tagName
             <>
               {title}
               <span class="icon-chevron">
-                <svg
-                  aria-hidden="true"
-                  width="12"
-                  height="8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" width="12" height="8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M1.4 1.6L6 6.2l4.6-4.6"
                     stroke="currentColor"
@@ -79,13 +66,7 @@ const Tag = tagName
           ) : (
             <>
               <span class="icon-plus">
-                <svg
-                  aria-hidden="true"
-                  width="20"
-                  height="2"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg aria-hidden="true" width="20" height="2" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill="currentColor" d="M20 .5v1H0v-1z" />
                 </svg>
                 <svg width="2" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,9 +115,10 @@ const Tag = tagName
 
   .wrapper::details-content {
     opacity: 0;
-    transition: content-visibility var(--transition-duration) allow-discrete,
-    opacity var(--transition-duration) var(--transition-easing),
-    block-size var(--transition-duration) var(--transition-easing);
+    transition:
+      content-visibility var(--transition-duration) allow-discrete,
+      opacity var(--transition-duration) var(--transition-easing),
+      block-size var(--transition-duration) var(--transition-easing);
     block-size: 0;
     overflow-y: clip;
   }

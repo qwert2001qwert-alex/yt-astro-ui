@@ -1,4 +1,4 @@
-| Prop    | Type      | Default | Description |
-|---------|-----------|---------|-------------|
-| `name`  | `string`  | -       | Key         |
-| `value` | `string`  | -       | Value       |
+| Prop    | Type     | Default | Description |
+| ------- | -------- | ------- | ----------- |
+| `name`  | `string` | -       | Key         |
+| `value` | `string` | -       | Value       |

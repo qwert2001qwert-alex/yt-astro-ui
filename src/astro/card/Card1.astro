@@ -1,11 +1,11 @@
 ---
-import { Icon } from 'astro-icon/components'
-import { twMerge } from 'tailwind-merge'
-import Image from 'yt-astro-ui/astro/image/Image.astro'
-import Card0 from 'yt-astro-ui/astro/card/Card0.astro'
-import { Button } from 'yt-astro-ui/svelte/button/index.ts'
-import type { HTMLTag } from 'astro/types'
-import type { ICallToAction, ICard, ILink, INameValue } from 'yt-astro-ui/types'
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import Image from 'yt-astro-ui/astro/image/Image.astro';
+import Card0 from 'yt-astro-ui/astro/card/Card0.astro';
+import { Button } from 'yt-astro-ui/svelte/button/index.ts';
+import type { HTMLTag } from 'astro/types';
+import type { ICallToAction, ICard, ILink, INameValue } from 'yt-astro-ui/types';
 
 export interface Props extends ICard {
   asHeader?: HTMLTag;
@@ -29,9 +29,9 @@ const {
   classes = {},
   as = 'article',
   asHeader = 'h3',
-} = Astro.props
+} = Astro.props;
 
-const WrapperHeaderTag = asHeader
+const WrapperHeaderTag = asHeader;
 
 const {
   title: titleClass = '',
@@ -40,13 +40,13 @@ const {
   icon: iconClass = '',
   quickLink: quickLinkClass = 'font-semibold underline text-primary hover:text-primary/80',
   action: actionClass = '',
-} = classes
+} = classes;
 
 const img = {
   src: typeof image === 'string' ? image : image?.src,
   alt: typeof image === 'string' ? title : image?.alt,
   aspectRatio: typeof image === 'string' ? '4:3' : image?.aspectRatio || '4:3',
-}
+};
 ---
 
 <Card0
@@ -55,55 +55,53 @@ const img = {
     content: 'space-y-6',
   }}
 >
-
-  <!-- Image -->
   <Fragment slot="image">
-    {image && (
-      <div class={twMerge('w-full overflow-hidden -mt-6 h-60 bg-gray-400 dark:bg-zinc-700', imageClass)}>
-        {(callToAction && callToAction.href) ? (
-          <a href={callToAction.href} class="group">
+    {
+      image && (
+        <div class={twMerge('w-full overflow-hidden -mt-6 h-60 bg-gray-400 dark:bg-zinc-700', imageClass)}>
+          {callToAction && callToAction.href ? (
+            <a href={callToAction.href} class="group">
+              <Image
+                src={img.src}
+                class={twMerge('w-full h-full  hover:scale-105 transition duration-300')}
+                widths={[400, 900]}
+                width={400}
+                height={400}
+                sizes="(max-width: 900px) 400px, 900px"
+                alt={img.alt}
+                aspectRatio={img.aspectRatio}
+                layout="cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ) : (
             <Image
-              src={img.src}
-              class={twMerge('w-full h-full  hover:scale-105 transition duration-300')}
+              src={img.src || String(image)}
+              class={twMerge('w-full h-full')}
               widths={[400, 900]}
               width={400}
               height={400}
               sizes="(max-width: 900px) 400px, 900px"
-              alt={img.alt}
+              alt={img.alt || title}
               aspectRatio={img.aspectRatio}
               layout="cover"
               loading="lazy"
               decoding="async"
             />
-          </a>
-        ) : (
-          <Image
-            src={img.src || String(image)}
-            class={twMerge('w-full h-full')}
-            widths={[400, 900]}
-            width={400}
-            height={400}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={img.alt || title}
-            aspectRatio={img.aspectRatio}
-            layout="cover"
-            loading="lazy"
-            decoding="async"
-          />
-        )}
-      </div>
-    )}
+          )}
+        </div>
+      )
+    }
 
-    <!-- Icon -->
-    {icon && (
-      <div class="px-6">
-        <Icon name={icon} class={twMerge('w-12 h-12 text-primary', image ? 'mt-6' : '', iconClass)} />
-      </div>
-    )}
+    {
+      icon && (
+        <div class="px-6">
+          <Icon name={icon} class={twMerge('w-12 h-12 text-primary', image ? 'mt-6' : '', iconClass)} />
+        </div>
+      )
+    }
   </Fragment>
-
-
-  <!-- Content -->
 
   <div class={twMerge('px-6 space-y-6')}>
     <!-- Title & Description -->
@@ -118,46 +116,43 @@ const img = {
       </div>
     </div>
 
-    <!-- Quick navigation links -->
     {
       links && links.length > 0 && (
         <div class="flex flex-col">
           {links.map((link) => (
-            <a
-              href={link.href}
-              class={twMerge('transition-colors', quickLinkClass)}
-            >
+            <a href={link.href} class={twMerge('transition-colors', quickLinkClass)}>
               {link.text}
             </a>
           ))}
         </div>
-      )}
+      )
+    }
   </div>
 
-  <!-- Data list -->
-  {(data && data.length > 0) && (
-    <div class="text-sm">
-      {data.map((item) => (
-        <div
-          class="flex items-center justify-between py-2 px-6 odd:bg-white even:bg-slate-50 dark:odd:bg-transparent dark:even:bg-zinc-800">
-          <div class="text-muted-foreground">{item.name}</div>
-          <div>{item.value}</div>
-        </div>
-      ))}
-    </div>
-  )}
+  {
+    data && data.length > 0 && (
+      <div class="text-sm">
+        {data.map((item) => (
+          <div class="flex items-center justify-between py-2 px-6 odd:bg-white even:bg-slate-50 dark:odd:bg-transparent dark:even:bg-zinc-800">
+            <div class="text-muted-foreground">{item.name}</div>
+            <div>{item.value}</div>
+          </div>
+        ))}
+      </div>
+    )
+  }
 
-  {(callToAction) && (
-    <div class={twMerge('w-full px-6')}>
-      <slot name="footer" />
+  {
+    callToAction && (
+      <div class={twMerge('w-full px-6')}>
+        <slot name="footer" />
 
-      <!-- Action Button -->
-      {callToAction && (
-        <div class={twMerge('', actionClass)}>
-          <Button {...callToAction} />
-        </div>
-      )}
-    </div>
-  )}
-
+        {callToAction && (
+          <div class={twMerge('', actionClass)}>
+            <Button {...callToAction} />
+          </div>
+        )}
+      </div>
+    )
+  }
 </Card0>

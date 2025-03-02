@@ -1,7 +1,7 @@
 ---
 import WidgetWrapper from 'yt-astro-ui/astro/container/WidgetWrapper.astro';
 import type { ICallToAction, IWidget } from 'yt-astro-ui/types';
-import { Button } from "yt-astro-ui/svelte/button/index.js";
+import { Button } from 'yt-astro-ui/svelte/button/index.js';
 import Headline from 'yt-astro-ui/astro/headline/Headline.astro';
 
 interface Props extends IWidget {
@@ -24,6 +24,7 @@ const {
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
+
 <WidgetWrapper id={id} isDark={isDark} containerClass={`@container ${classes?.container ?? ''}`} bg={bg}>
   <div class="@lg:flex gap-12">
     <Headline

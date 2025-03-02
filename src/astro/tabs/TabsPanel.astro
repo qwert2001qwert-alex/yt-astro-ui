@@ -1,38 +1,32 @@
 ---
 /**
-  * TabsPanel Component
-  *
-  * @description A panel within a Tabs component
-  */
+ * TabsPanel Component
+ *
+ * @description A panel within a Tabs component
+ */
 interface Props {
   /**
    * Unique identifier for the panel
    */
-  id: string
+  id: string;
   /**
    * ID of the tab that labels this panel
    */
-  labelledby: string
+  labelledby: string;
   /**
    * Whether this panel is currently selected
    */
-  selected?: boolean
+  selected?: boolean;
   /**
    * Additional classes to apply to the panel
    */
-  class?: string
+  class?: string;
 }
 
-const { id, labelledby, selected = false, class: className } = Astro.props
+const { id, labelledby, selected = false, class: className } = Astro.props;
 ---
 
-<div
-  class:list={['tab-panel', className]}
-  role="tabpanel"
-  id={id}
-  aria-labelledby={labelledby}
-  aria-hidden={!selected}
->
+<div class:list={['tab-panel', className]} role="tabpanel" id={id} aria-labelledby={labelledby} aria-hidden={!selected}>
   <slot />
 </div>
 

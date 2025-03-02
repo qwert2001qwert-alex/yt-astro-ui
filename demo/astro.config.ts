@@ -17,18 +17,18 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    mdx(), 
+    mdx(),
     icon({
       include: {
         tabler: ['*'],
       },
-      iconDir: "src/assets/icons",
-    }), 
+      iconDir: 'src/assets/icons',
+    }),
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },
       })
-    ), 
+    ),
     compress({
       CSS: true,
       HTML: {
@@ -40,13 +40,13 @@ export default defineConfig({
       JavaScript: true,
       SVG: false,
       Logger: 1,
-    }), 
+    }),
     svelte(),
     vendor({
       config: './src/config.yaml',
     }),
   ],
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });

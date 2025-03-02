@@ -10,21 +10,20 @@ import { ItemGrid0 } from 'yt-astro-ui';
 
 <div className="space-y-12">
   <Demo title="">
-    <ItemGrid0 columns={4} class='p-6'>
-      {Array.from({ length: 12 }, (_, i) => i).map(i => (
+    <ItemGrid0 columns={4} class="p-6">
+      {Array.from({ length: 12 }, (_, i) => i).map((i) => (
         <div className="flex items-center justify-center py-12 rounded bg-slate-100 dark:bg-zinc-800">{i + 1}</div>
       ))}
     </ItemGrid0>
   </Demo>
 </div>
 
-
 ```astro
 ---
 import { ItemGrid0 } from 'yt-astro-ui';
 ---
 
-<ItemGrid0 columns={4} class='p-6'>
+<ItemGrid0 columns={4} class="p-6">
   <div>1</div>
   <div>2</div>
   <div>3</div>
@@ -36,9 +35,8 @@ import { ItemGrid0 } from 'yt-astro-ui';
 
 <div className="overflow-x-auto">
   <div className="min-w-xl">
-    | Prop | Type | Default | Description |
-    |-----------|------------|------------|------------|
-    | `class` | `string` | - | Additional CSS classes to apply to the container |
-    | `columns` | `number` | `1` | Number of columns in the grid. From 1 to 4 |
+    | Prop | Type | Default | Description | |-----------|------------|------------|------------| | `class` | `string` |
+    - | Additional CSS classes to apply to the container | | `columns` | `number` | `1` | Number of columns in the grid.
+    From 1 to 4 |
   </div>
 </div>

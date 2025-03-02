@@ -29,10 +29,10 @@ The `index.ts` file is the "entry point" for your package. Export your component
 
 All commands are run from the root of the project, from a terminal:
 
-| Command    | Action                                                                                                                                                                                                                           |
-|:-----------| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm link` | Registers this package locally. Run `npm link my-component-library` in an Astro project to install your components                                                                                                               |
-| `npm publish --access public`         | [Publishes](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages#publishing-unscoped-public-packages) this package to NPM. Requires you to be [logged in](https://docs.npmjs.com/cli/v8/commands/npm-adduser) |
+| Command                       | Action                                                                                                                                                                                                                           |
+| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm link`                    | Registers this package locally. Run `npm link my-component-library` in an Astro project to install your components                                                                                                               |
+| `npm publish --access public` | [Publishes](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages#publishing-unscoped-public-packages) this package to NPM. Requires you to be [logged in](https://docs.npmjs.com/cli/v8/commands/npm-adduser) |
 
 ```shell
 cd ~/
@@ -41,9 +41,8 @@ cd ~/demo
 npm link yt-astro-ui  # Step 2.
 ```
 
-
 ## TODO:
 
 - https://accessible-astro.incluud.dev/components/breadcrumbs/
 - https://github.com/incluud/accessible-astro-components/blob/main/tsconfig.json
-- 
+-
