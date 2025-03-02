@@ -10,3 +10,24 @@ import { twMerge } from 'tailwind-merge';
 export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
+
+export function toggleClass(el: string, className: string) {
+  const element = document.querySelector(el);
+  if(!element) return;
+
+  element.classList.toggle(className);
+}
+
+export function addClass(el: string, className: string) {
+  const element = document.querySelector(el);
+  if(!element) return;
+
+  element.classList.add(className);
+}
+
+export function removeClass(el: string, className: string) {
+  const element = document.querySelector(el);
+  if(!element) return;
+
+  element.classList.remove(className);
+}

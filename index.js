@@ -20,6 +20,7 @@ export { default as Features1Widget } from 'yt-astro-ui/astro/Features1.widget.a
 export { default as WidgetWrapper } from './src/astro/container/WidgetWrapper.astro';
 
 /* Carousel */
+export { default as CardSliderWidget } from './src/astro/carousel/CardSlider.widget.astro';
 export { default as HeroSliderWidget } from './src/astro/carousel/hero-slider/HeroSlider.widget.astro';
 export { default as HeroSlide } from './src/astro/carousel/hero-slider/HeroSlide.astro';
 

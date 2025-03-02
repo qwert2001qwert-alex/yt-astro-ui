@@ -1,0 +1,141 @@
+---
+title: Carousel - Card Slider
+category: Widget
+---
+
+import Demo from '~/components/Demo.astro';
+import { CardSliderWidget } from 'yt-astro-ui';
+
+# Carousel - Card Slider
+
+This component uses [Swiper Element (WebComponent)](https://swiperjs.com/element)
+
+<Demo title="">
+  <CardSliderWidget
+    useToRender="Card2"
+    items={[
+      {
+        title: 'Slide 1',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+        image: '~/assets/images/local_placeholder.jpeg',
+        url: '#',
+      },
+      {
+        title: 'Slide + CSS',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit',
+        image: '~/assets/images/local_placeholder.jpeg',
+        url: '#',
+        classes: {
+          container: 'rounded-3xl bg-linear-to-r/srgb from-gray-900 to-gray-600',
+          image: '',
+          title: 'font-bold uppercase bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent',
+          description: 'text-zinc-300'
+        },
+      },
+      {
+        title: 'Slide 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+        image: '~/assets/images/local_placeholder.jpeg',
+        url: '#',
+      },
+      {
+        title: 'Slide 4',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+        image: '~/assets/images/local_placeholder.jpeg',
+        url: '#',
+      },
+      {
+        title: 'Slide 5',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+        image: '~/assets/images/local_placeholder.jpeg',
+        url: '#',
+      },
+      {
+        title: 'Slide 6',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+        image: '~/assets/images/local_placeholder.jpeg',
+        url: '#',
+      },
+    ]}
+  />
+</Demo>
+
+
+```astro
+---
+import { CardSliderWidget } from "yt-astro-ui";
+---
+
+<CardSliderWidget
+  useToRender="Card2"
+  items={[
+    {
+      title: 'Slide 1',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: '~/assets/images/local_placeholder.jpeg',
+      url: '#',
+    },
+    {
+      title: 'Slide + CSS',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit',
+      image: '~/assets/images/local_placeholder.jpeg',
+      url: '#',
+      classes: {
+        container: 'rounded-3xl bg-linear-to-r/srgb from-gray-900 to-gray-600',
+        image: '',
+        title: 'font-bold uppercase bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent',
+        description: 'text-zinc-300'
+      },
+    },
+    {
+      title: 'Slide 3',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: '~/assets/images/local_placeholder.jpeg',
+      url: '#',
+    },
+    {
+      title: 'Slide 4',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: '~/assets/images/local_placeholder.jpeg',
+      url: '#',
+    },
+    {
+      title: 'Slide 5',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: '~/assets/images/local_placeholder.jpeg',
+      url: '#',
+    },
+    {
+      title: 'Slide 6',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
+      image: '~/assets/images/local_placeholder.jpeg',
+      url: '#',
+    },
+  ]}
+/>
+```
+
+## Props
+
+<div className="overflow-x-auto">
+  | Prop | Type | Default | Description |
+  |------------|------------|------------|------------|
+  | `useToRender` | `string` | `Card1` | Which component should be used for rendering - [Card1](/docs/feature-card-1) or [Card2](/docs/feature-card-2) |
+  | `id` | `string` | js random | By default, the `id` is generated automatically. If you decide to specify this parameter yourself, make sure that it is unique on the page |
+  | `title` | `string` | - | `Title` in [Headline](/docs/feature-card-1) component |
+  | `subtitle` | `string` | - | `Subtitle` in [Headline](/docs/feature-card-1) component |
+  | `tagline` | `string` | - | `Tagline` in [Headline](/docs/feature-card-1) component |
+  | `isDark` | `boolean` | `false` | Adds the `dark` CSS class to the wrapper |
+  | `bg` | `string` | - | Set background element |
+  | `isAfterContent` | `boolean` | `false` |  |
+  | `items` | Array< [Card1](/docs/feature-card-1) > | `[]` | Array of [Card1](/docs/feature-card-1) or [Card2](/docs/feature-card-2) components |
+  | `withNavigation` | `boolean` | `true` | Navigation visibility |
+  | `classes.swiper` | `string` | - | CSS classes for the `swiper-container` container |
+  | `classes.container` | `string` | - | CSS classes for the `WidgetWrapper` container |
+  | `classes.loading` | `string` | - | CSS classes for loading layout |
+  | `classes.headline.container` | `string` | - | CSS classes for the `container` in the [Headline](/docs/feature-card-1) component |
+  | `classes.headline.title` | `string` | - | CSS classes for the `title` in the [Headline](/docs/feature-card-1) component |
+  | `classes.headline.subtitle` | `string` | - | CSS classes for the `subtitle` in the [Headline](/docs/feature-card-1) component |
+  | `classes.headline.tagline` | `string` | - | CSS classes for the `tagline` in the [Headline](/docs/feature-card-1) component |
+  | `autoplay` + etc. | `boolean` | `false` | + other params from [Swiperjs](https://swiperjs.com/element#parameters-as-attributes) |
+</div>

@@ -280,6 +280,30 @@ type HeroSliderWidget = typeof import('../index.js').HeroSliderWidget
 export const HeroSliderWidget: HeroSliderWidget;
 
 /**
+ * CardSliderWidget
+ *
+ * @param _props - Record<string, any>
+ * @param _props.id -
+ * @param _props.title -
+ * @param _props.subtitle -
+ * @param _props.tagline -
+ * @param _props.isDark -
+ * @param _props.isAfterContent -
+ * @param _props.items -
+ * @param _props.withNavigation -
+ * @param _props.classes.swiper -
+ * @param _props.classes.container -
+ * @param _props.classes.loading -
+ * @param _props.classes.headline.container -
+ * @param _props.classes.headline.title -
+ * @param _props.classes.headline.subtitle -
+ * @param _props.classes.headline.tagline -
+ * @param _props.autoplay -
+ */
+type CardSliderWidget = typeof import('../index.js').CardSliderWidget
+export const CardSliderWidget: CardSliderWidget;
+
+/**
  * HeroSlide
  *
  * @param _props - Record<string, any>

@@ -1,14 +1,13 @@
 ---
-title: Carousel - HeroSlider
+title: Carousel - Hero Slider
 category: Widget
 ---
 
 import Demo from '~/components/Demo.astro';
 import { HeroSliderWidget, HeroSlide } from 'yt-astro-ui';
-import IImage from '../types/IImage.md';
 import ICallToAction from '../types/ICallToAction.md';
 
-# Carousel - HeroSlider
+# Carousel - Hero Slider
 
 This component uses [Swiper Element (WebComponent)](https://swiperjs.com/element)
 
@@ -31,25 +30,18 @@ This component uses [Swiper Element (WebComponent)](https://swiperjs.com/element
       {
         title: 'Custom CSS classes',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit',
-        image: 'https://placehold.co/800x600?text=Slide+2',
-        classes: {
-          container: 'rounded-3xl h-72 bg-linear-to-r/srgb from-gray-900 to-gray-600',
-          image: '',
-          title: 'font-bold uppercase bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent',
-          description: 'text-zinc-300'
-        },
+        image: '~/assets/images/local_placeholder.jpeg',
         callToAction: {
           variant: 'primary',
           text: 'Next',
           href: '#',
         },
-        class: "bg-purple-800"
       },
       {
         title: 'Without Action Button',
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit dolor sit amet, consectetur adipisicing elit.',
         image: {
-          src: 'https://placehold.co/800x600?text=Slide+3',
+          src: '~/assets/images/local_placeholder.jpeg',
           alt: 'Lorem Ipsum',
         },
       },
@@ -57,7 +49,6 @@ This component uses [Swiper Element (WebComponent)](https://swiperjs.com/element
   />
 </Demo>
 
-## Usage
 
 ```astro
 ---
@@ -235,38 +226,6 @@ import { HeroSlide } from "yt-astro-ui";
 />
 ```
 
-
-### Configuration
-
-See more on the [official website](https://swiperjs.com/element#updating-parameters)
-
-```astro
-<!-- With background -->
-<HeroSlider
-  items={[...]}
->
-  <!-- Background container -->
-  <Fragment slot="bg">
-      <div class="absolute inset-0 bg-primary/10 dark:bg-card"></div>
-    </Fragment>
-</HeroSlider>
-
-<!-- With custom props -->
-<HeroSlider
-  classes={{ 
-    height: 'h-[50rem]',
-    container: 'py-4',
-    loading: 'bg-card',
-  }}
-  id='heroSection'
-  withPagination={true}
-  withNavigation={true}
-  autoplay={true}
-  isDark="true"
-  items={[...]}
-/>
-```
-
 ## Props
 
 ### HeroSlider
@@ -276,15 +235,16 @@ See more on the [official website](https://swiperjs.com/element#updating-paramet
     | Prop | Type | Default | Description |
     |------------|------------|------------|------------|
     | `height` | `string` | `h-[28rem]` | Set the height of the slider and its layers |
-    | `classes.slider` | `string` | - | CSS classes for the `swiper-container` container |
+    | `id` | `string` | js random | By default, the `id` is generated automatically. If you decide to specify this parameter yourself, make sure that it is unique on the page |
+    | `classes.swiper` | `string` | - | CSS classes for the `swiper-container` container |
     | `classes.container` | `string` | - | CSS classes for the `WidgetWrapper` container |
     | `classes.loading` | `string` | - | CSS classes for loading layout |
-    | `id` | `string` | - | |
     | `withPagination` | `boolean` | `true` | Pagination visibility |
     | `withNavigation` | `boolean` | `true` | Navigation visibility |
     | `autoplay` | boolean | `true` | |
     | `isDark` | boolean | `false` | |
-    | `items` | `HeroSlide[]` | `[]` | Array of `<HeroSlide />` components |
+    | `items` | `HeroSlide[]` | `[]` | Array of `HeroSlide` components |
+    | `autoplay` + etc. | `boolean` | `false` | + other params from [Swiperjs](https://swiperjs.com/element#parameters-as-attributes) |
   </div>
 </div>
 
@@ -297,7 +257,7 @@ See more on the [official website](https://swiperjs.com/element#updating-paramet
     |------------|------------|------------|------------|
     | `title` | `string` | - | Title text for the card |
     | `description` | `string` | - | Content for the card |
-    | `image` | `string` \| `IIMage` | - | Path to the card's image |
+    | `image`     | `string` \| [Image](/docs/image) | - | Path to the card's image |
     | `callToAction` | `ICallToAction` | - | |
     | `classes.container` | `string` | `h-96` | |
     | `classes.image` | `string` | - | |
@@ -311,14 +271,5 @@ See more on the [official website](https://swiperjs.com/element#updating-paramet
 <div className="overflow-x-auto">
   <div className="min-w-xl">
     <ICallToAction />
-  </div>
-</div>
-
-
-### IIMage
-
-<div className="overflow-x-auto">
-  <div className="min-w-xl">
-    <IImage />
   </div>
 </div>
