@@ -2,29 +2,38 @@
 import WidgetWrapper from 'yt-astro-ui/astro/container/WidgetWrapper.astro'
 import Headline from 'yt-astro-ui/astro/headline/Headline.astro'
 import ItemGrid0 from 'yt-astro-ui/astro/grid/ItemGrid0.astro'
-import Card1 from 'yt-astro-ui/astro/card/Card1.astro'
-import type { Props as ICard1 } from 'yt-astro-ui/astro/card/Card1.astro'
-import type { ICard, IWidget, IHeadline } from 'yt-astro-ui/types'
+import type { ICard, IWidget, IHeadline } from 'yt-astro-ui/types';
+
+import type { Props as ICard1 } from 'yt-astro-ui/astro/card/Card1.astro';
+import type { Props as ICard2 } from 'yt-astro-ui/astro/card/Card1.astro';
+import Card1 from 'yt-astro-ui/astro/card/Card1.astro';
+import Card2 from 'yt-astro-ui/astro/card/Card2.astro';
 
 export interface Props extends Omit<IHeadline, 'classes'>, IWidget {
-  items?: ICard1[];
+  useToRender?: 'Card1' | 'Card2';
+  items?: ICard1[] | ICard2[];
   columns?: number;
   isBeforeContent?: boolean;
   isAfterContent?: boolean;
 }
 
 const {
+  useToRender = 'Card1',
+  
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
-  items = [],
+  items = [] as ICard1[] | ICard2[],
   columns = 4,
 
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props
+} = Astro.props;
+
+const cardComponents = { Card1, Card2 };
+const Component = cardComponents[useToRender];
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`${classes?.container ?? ''}`} bg={bg}>
@@ -32,7 +41,7 @@ const {
   <ItemGrid0 columns={columns}>
     {
       items && items.map((item: ICard) => (
-        <Card1 {...item} />
+        <Component {...item} />
       ))
     }
   </ItemGrid0>

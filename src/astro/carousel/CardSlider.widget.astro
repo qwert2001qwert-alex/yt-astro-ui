@@ -1,18 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
 import WidgetWrapper from 'yt-astro-ui/astro/container/WidgetWrapper.astro';
-import type { Props as ICard1 } from 'yt-astro-ui/astro/card/Card1.astro'
-import type { IHeadline, IWidget } from 'yt-astro-ui/types'
+import type { IHeadline, IWidget } from 'yt-astro-ui/types';
+import Headline from 'yt-astro-ui/astro/headline/Headline.astro';
+import { cn } from 'yt-astro-ui/utils';
+import type { Props as ICard1 } from 'yt-astro-ui/astro/card/Card1.astro';
+import type { Props as ICard2 } from 'yt-astro-ui/astro/card/Card1.astro';
 import Card1 from 'yt-astro-ui/astro/card/Card1.astro';
 import Card2 from 'yt-astro-ui/astro/card/Card2.astro';
-import Headline from 'yt-astro-ui/astro/headline/Headline.astro'
-import { cn } from 'yt-astro-ui/utils'
-
-const cardComponents = { Card1, Card2 };
 
 export interface Props extends IWidget, Omit<IHeadline, 'classes'> {
   useToRender?: 'Card1' | 'Card2';
-  items?: ICard1[],
+  items?: ICard1[] | ICard2[],
   isAfterContent: boolean;
   withNavigation: boolean;
 }
@@ -24,7 +23,7 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
   
-  items = [] as ICard1[],
+  items = [] as ICard1[] | ICard2[],
   isAfterContent = false,
 
   id = (Math.random() + 1).toString(36).substring(7),
@@ -35,6 +34,7 @@ const {
   ...rest
 } = Astro.props;
 
+const cardComponents = { Card1, Card2 };
 const Component = cardComponents[useToRender];
 ---
 
@@ -110,14 +110,14 @@ const Component = cardComponents[useToRender];
     matches.forEach((elem) => {
       const id = elem.dataset.id;
 
-      elem.addEventListener('swiperreachend', (event) => {
+      elem.addEventListener('swiperreachend', () => {
         removeClass(`#btn-next-${id}`, 'opacity-100');
         addClass(`#btn-next-${id}`, 'opacity-0');
       }, false);
-      elem.addEventListener('swiperreachbeginning', (event) => {
+      elem.addEventListener('swiperreachbeginning', () => {
         addClass(`#btn-prev-${id}`, 'opacity-0');
       }, false);
-      elem.addEventListener('swiperfromedge', (event) => {
+      elem.addEventListener('swiperfromedge', () => {
         removeClass(`#btn-prev-${id}`, 'opacity-0');
         addClass(`#btn-next-${id}`, 'opacity-100');
       }, false);

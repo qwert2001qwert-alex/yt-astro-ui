@@ -102,97 +102,105 @@ import { Features1Widget } from 'yt-astro-ui';
 />
 ```
 
+<Demo title="With icons & Card2 for render">
+  <Features1Widget
+    useToRender="Card2"
+    title="Lorem Ipsum"
+    subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:home',
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        url: '/',
+      },
+      {
+        icon: 'tabler:tractor',
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        url: '/',
+      },
+      {
+        icon: 'tabler:circle-chevrons-down',
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        url: '/',
+      },
+    ]}
+  />
+</Demo>
 
-
-<div className="space-y-12">
-  <Demo title="With icons">
-    <Features1Widget
-      title="Lorem Ipsum"
-      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      columns={3}
-      items={[
-        {
-          icon: 'tabler:home',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          callToAction: { href: '/', text: 'Read more' },
-        },
-        {
-          icon: 'tabler:tractor',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          callToAction: { href: '/', text: 'Read more' },
-        },
-        {
-          icon: 'tabler:circle-chevrons-down',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        },
-      ]}
-    />
-  </Demo>
-
-  <Demo title="With background">
-    <Features1Widget
-      title="Lorem Ipsum"
-      subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      columns={3}
-      items={[
-        {
-          icon: 'tabler:home',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          callToAction: { href: '/', text: 'Read more' },
-        },
-        {
-          icon: 'tabler:tractor',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          callToAction: { href: '/', text: 'Read more' },
-        },
-        {
-          icon: 'tabler:circle-chevrons-down',
-          title: 'Lorem Ipsum',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        },
-      ]}
-    >
-      <Fragment slot="bg">
-        <div className="absolute inset-0 bg-primary/20"></div>
-      </Fragment>
-    </Features1Widget>
-  </Demo>
-</div>
 
 ```astro
 ---
-import { Features1Widget } from 'yt-astro-ui';
+import { FeaturesWidget } from 'yt-astro-ui';
 ---
 
 <Features1Widget
+  useToRender="Card2"
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   columns={3}
   items={[
     {
+      icon: 'tabler:home',
       title: 'Lorem Ipsum',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      callToAction: { href: '/', text: 'Read more' },
+      url: '/',
     },
     {
+      icon: 'tabler:tractor',
       title: 'Lorem Ipsum',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      callToAction: { href: '/', text: 'Read more' },
+      url: '/',
     },
     {
+      icon: 'tabler:circle-chevrons-down',
       title: 'Lorem Ipsum',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      callToAction: { href: '/', text: 'Read more' },
+      url: '/',
     },
   ]}
 />
+```
 
-<!-- With background -->
+<Demo title="With background">
+  <Features1Widget
+    title="Lorem Ipsum"
+    subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:home',
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        callToAction: { href: '/', text: 'Read more' },
+      },
+      {
+        icon: 'tabler:tractor',
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        callToAction: { href: '/', text: 'Read more' },
+      },
+      {
+        icon: 'tabler:circle-chevrons-down',
+        title: 'Lorem Ipsum',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div className="absolute inset-0 bg-primary/20"></div>
+    </Fragment>
+  </Features1Widget>
+</Demo>
+
+```astro
+---
+import { FeaturesWidget } from 'yt-astro-ui';
+---
+
 <Features1Widget
   title="Lorem Ipsum"
   subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
@@ -200,7 +208,7 @@ import { Features1Widget } from 'yt-astro-ui';
   items={[...]}
 >
   <Fragment slot="bg">
-    <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800 "></div>
+    <div className="absolute inset-0 bg-primary/20"></div>
   </Fragment>
 </Features1Widget>
 ```
@@ -211,11 +219,12 @@ import { Features1Widget } from 'yt-astro-ui';
   <div className="min-w-xl">
     | Prop | Type | Default | Description |
     |-----------|------------|------------|------------|
+    | `items` | Array< [Card1](/docs/feature-card-1) > | `[]` | Array of [Card1](/docs/feature-card-1) components |
+    | `useToRender` | `string` | `Card1` | Which component should be used for rendering - [Card1](/docs/feature-card-1) or [Card2](/docs/feature-card-2) |
     | `title` | `string` | - | `Title` in [Headline](/docs/feature-card-1) component |
     | `subtitle` | `string` | - | `Subtitle` in [Headline](/docs/feature-card-1) component |
     | `tagline` | `string` | - | `Tagline` in [Headline](/docs/feature-card-1) component |
     | `columns` | `number` | `1` | Number of columns in the grid. From 1 to 4 |
-    | `items` | Array< [Card1](/docs/feature-card-1) > | `[]` | Array of [Card1](/docs/feature-card-1) components |
     | `id` | `string` | - | Specify a unique id for the section |
     | `isDark` | `boolean` | `false` | Adds the `dark` CSS class to the wrapper |
     | `bg` | `string` | - | Set background element |
