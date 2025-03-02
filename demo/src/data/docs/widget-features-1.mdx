@@ -4,14 +4,8 @@ category: Widget
 ---
 import Demo from '~/components/Demo.astro';
 import { Features1Widget } from 'yt-astro-ui';
-import INameValue from '../types/INameValue.md';
-import ILink from '../types/ILink.md';
-import ICallToAction from '../types/ICallToAction.md';
 
-
-# Features 1
-
-## Usage
+# Features1
 
 <div className="space-y-12">
   <Demo title="Full of content">
@@ -111,7 +105,7 @@ import { Features1Widget } from 'yt-astro-ui';
 
 
 <div className="space-y-12">
-  <Demo title="With icon">
+  <Demo title="With icons">
     <Features1Widget
       title="Lorem Ipsum"
       subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
@@ -213,67 +207,22 @@ import { Features1Widget } from 'yt-astro-ui';
 
 ## Props
 
-### Features1Widget
-
 <div className="overflow-x-auto">
   <div className="min-w-xl">
     | Prop | Type | Default | Description |
     |-----------|------------|------------|------------|
+    | `title` | `string` | - | `Title` in [Headline](/docs/feature-card-1) component |
+    | `subtitle` | `string` | - | `Subtitle` in [Headline](/docs/feature-card-1) component |
+    | `tagline` | `string` | - | `Tagline` in [Headline](/docs/feature-card-1) component |
     | `columns` | `number` | `1` | Number of columns in the grid. From 1 to 4 |
-    | `items` | `IItem[]` | `[]` | |
-    | `title` | `string` | - | |
-    | `subtitle` | `string` | - | |
-    | `tagline` | `string` | - | |
-    | `id` | `string` | - | |
-    | `isDark` | `boolean` | `false` | |
-    | `bg` | `string` | - | |
-    | `classes.container` | `string` | - | |
-    | `classes.headline.container` | `string` | - | |
-    | `classes.headline.title` | `string` | - | |
-    | `classes.headline.subtitle` | `string` | - | |
-    | `classes.headline.tagline` | `string` | - | |
-  </div>
-</div>
-
-### IItem
-
-<div className="overflow-x-auto">
-  <div className="min-w-xl">
-    | Prop | Type | Default | Description |
-    |-----------|------------|------------|------------|
-    | `as` | `string` | `article` | HTML tag name for the wrapper |
-    | `asHeader` | `string` | `h3` | HTML tag name for the title |
-    | `title` | `string` | - | |
-    | `description` | `string` | - | |
-    | `icon` | `string` | - | |
-    | `callToAction` | `ICallToAction` | - | |
-    | `data` | `INameValue[]` | - | |
-    | `links` | `ILink[]` | - | |
-    | `badge` | `string` | - | |
-  </div>
-</div>
-
-
-### INameValue
-
-<div className="overflow-x-auto">
-  <div className="min-w-xl">
-    <INameValue />
-  </div>
-</div>
-
-### ILink
-
-<div className="overflow-x-auto">
-  <div className="min-w-xl">
-    <ILink />
-  </div>
-</div>
-
-### ICallToAction
-
-<div className="overflow-x-auto">
-  <div className="min-w-xl">
-    <ICallToAction />
+    | `items` | Array< [Card1](/docs/feature-card-1) > | `[]` | Array of [Card1](/docs/feature-card-1) components |
+    | `id` | `string` | - | Specify a unique id for the section |
+    | `isDark` | `boolean` | `false` | Adds the `dark` CSS class to the wrapper |
+    | `bg` | `string` | - | Set background element |
+    | `classes.container` | `string` | - | CSS classes for the root container |
+    | `classes.headline.container` | `string` | - | CSS classes for the `container` in the [Headline](/docs/feature-card-1) component |
+    | `classes.headline.title` | `string` | - | CSS classes for the `title` in the [Headline](/docs/feature-card-1) component |
+    | `classes.headline.subtitle` | `string` | - | CSS classes for the `subtitle` in the [Headline](/docs/feature-card-1) component |
+    | `classes.headline.tagline` | `string` | - | CSS classes for the `tagline` in the [Headline](/docs/feature-card-1) component |
   </div>
 </div>
