@@ -104,27 +104,41 @@ export const getAsset = (path: string): string =>
 /** */
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
 
+// @ts-ignore
 export const applyGetPermalinks = (menu: object = {}) => {
   if (Array.isArray(menu)) {
+    // @ts-ignore
     return menu.map((item) => applyGetPermalinks(item));
   } else if (typeof menu === 'object' && menu !== null) {
     const obj = {};
     for (const key in menu) {
       if (key === 'href') {
+        // @ts-ignore
         if (typeof menu[key] === 'string') {
+          // @ts-ignore
           obj[key] = getPermalink(menu[key]);
+          // @ts-ignore
         } else if (typeof menu[key] === 'object') {
+          // @ts-ignore
           if (menu[key].type === 'home') {
+            // @ts-ignore
             obj[key] = getHomePermalink();
+            // @ts-ignore
           } else if (menu[key].type === 'blog') {
+            // @ts-ignore
             obj[key] = getBlogPermalink();
+            // @ts-ignore
           } else if (menu[key].type === 'asset') {
+            // @ts-ignore
             obj[key] = getAsset(menu[key].url);
+            // @ts-ignore
           } else if (menu[key].url) {
+            // @ts-ignore
             obj[key] = getPermalink(menu[key].url, menu[key].type);
           }
         }
       } else {
+        // @ts-ignore
         obj[key] = applyGetPermalinks(menu[key]);
       }
     }

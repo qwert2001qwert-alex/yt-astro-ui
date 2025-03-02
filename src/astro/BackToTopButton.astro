@@ -93,8 +93,8 @@ import { Icon } from 'astro-icon/components';
       progress.style.strokeDashoffset = String(length - draw);
     };
 
-    window.addEventListener('scroll', function (e) {
-      //if (e?.currentTarget?.pageYOffset > offsetFromTop) {
+    window.addEventListener('scroll', function () {
+      //if (event?.currentTarget?.pageYOffset > offsetFromTop) {
       if (window.scrollY > offsetFromTop) {
         button.classList.add('show');
       } else {

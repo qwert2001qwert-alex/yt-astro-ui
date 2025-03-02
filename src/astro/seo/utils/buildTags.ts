@@ -91,7 +91,7 @@ export const buildTags = (config: AstroSeoProps): string => {
   }
 
   // Robots: noindex, nofollow, and other robotsProps
-  let robotsContent: string[] = [];
+  const robotsContent: string[] = [];
   if (typeof config.noindex !== 'undefined') {
     robotsContent.push(config.noindex ? 'noindex' : 'index');
   }

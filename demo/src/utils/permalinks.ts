@@ -1,5 +1,5 @@
 import slugify from 'limax';
-import { trim } from '~/utils/utils';
+import { trim } from 'yt-astro-ui/utils';
 
 export const trimSlash = (s: string) => trim(trim(s, '/'));
 const createPath = (...params: string[]) => {
@@ -15,7 +15,7 @@ const BASE_PATHNAME = '/';
 export const cleanSlug = (text = '') =>
   trimSlash(text)
     .split('/')
-    .map((slug) => slugify(slug))
+    .map((slug: string) => slugify(slug))
     .join('/');
 
 export const BLOG_BASE = 'docs';

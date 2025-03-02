@@ -1,5 +1,5 @@
 ---
-import type { AccordionItem } from '.';
+import type { Props as IAccordionItem } from 'yt-astro-ui/astro/accordion/AccordionItem.astro';
 
 /**
  * Accordion Component
@@ -15,7 +15,7 @@ interface Props {
   /**
    * Accordion items to render
    */
-  children: AccordionItem | AccordionItem[];
+  children: IAccordionItem | IAccordionItem[];
 }
 
 const { class: classNames } = Astro.props;
